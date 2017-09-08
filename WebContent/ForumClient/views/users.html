@@ -1,0 +1,13 @@
+  <div ng-controller="EditUsersCtrl" style="margin-right : 300px; margin-left : 300px;">
+    <ang-accordion class="accordion" one-at-a-time="true" icon-position="right" close-icon-class="fa fa-chevron-right accordion-container" open-icon-class="fa fa-chevron-down" >
+		
+	        <collapsible-item item-title="{{user.UserName}}"  ng-repeat="user in users" >
+	        <p>
+	             {{user.UserName}}: role {{user.Role}} 
+	        <span><button type="button" class="btn btn-success role-btn-user" ng-click="editRole(user.UserName, 'user')">To user</button></span><span><button type="button" class="btn btn-success role-btn-moderator"  ng-click="editRole(user.UserName, 'moderator')">To moderator</button></span><span><button type="button" class="btn btn-success role-btn-admin"  ng-click="editRole(user.UserName, 'admin')">To admin</button></span></p>
+	        </collapsible-item>
+		
+      
+      
+    </ang-accordion>
+</div>

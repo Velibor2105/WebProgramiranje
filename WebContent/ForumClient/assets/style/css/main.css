@@ -1,0 +1,29 @@
+/*navigation*/
+.accordion-container {
+	margin-right : 20px;
+	margin-left : 20px;
+}
+.register {
+	width : 90%;
+}
+
+.accordion {
+	margin : 100px;
+}
+
+.login {
+	width : 98%;
+}
+/*#logModal {
+	width : 400px;
+}*/
+
+.role-btn-user {
+	margin-left: 635px;
+}
+.role-btn-moderator {
+	margin-left: 5px;
+}
+.role-btn-admin {
+	margin-left: 5px;
+}

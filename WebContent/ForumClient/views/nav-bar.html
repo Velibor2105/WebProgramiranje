@@ -1,0 +1,137 @@
+<nav class="navbar navbar-inverse">
+	<div class="container-fluid">
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle" data-toggle="collapse"
+				data-target="#myNavbar">
+				<span class="icon-bar"></span> <span class="icon-bar"></span> <span
+					class="icon-bar"></span>
+			</button>
+			<a class="navbar-brand" href="#/">WebSiteName</a>
+		</div>
+		<div class="collapse navbar-collapse" id="myNavbar" >
+			<ul class="nav navbar-nav"  ng-controller="NavBarCtrl">
+				<li ng-click="changeState('forums')" class="{{homeClass}}"><a href="#/">Home</a></li>
+				<li ng-if="isAdmin" ng-click="changeState('users')" class="{{userClass}}"><a href="#/users">Edit users</a></li>
+			</ul>
+			<ul class="nav navbar-nav navbar-right">
+				<li ng-if="!isAdmin && !isUser && !isModerator"><a data-toggle="modal" data-target="#logModal"><span
+						class="glyphicon glyphicon-log-in"></span> Login</a></li>
+				<li ng-if="!isAdmin && !isUser && !isModerator"><a data-toggle="modal" data-target="#regModal"><span
+						class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+				<li ng-if="isAdmin || isUser || isModerator" ng-controller="LogoutCtrl" ng-click="logout()"><a><span
+						class="glyphicon glyphicon-log-out"></span>Logout</a></li>
+			</ul>
+		</div>
+	</div>
+
+
+	<div class="modal fade" id="logModal" role="dialog"  ng-controller="LoginCtrl">
+		<div class="modal-dialog modal-sm">
+			<div class="modal-content" style="width : 444px;">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+					<h4 class="modal-title">Login</h4>
+				</div>
+				<div class="modal-body">
+					<form ng-submit="login(user)" class="form-horizontal login">
+						<div class="form-group">
+							<label class="control-label col-sm-3" for="email">User
+								name:</label>
+							<div class="col-sm-9">
+
+								<input type="text" class="form-control" id="username"
+									placeholder="Enter username" data-ng-model="user.username">
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="control-label col-sm-3" for="email">Password:</label>
+							<div class="col-sm-9">
+								<input type="password" class="form-control" id="password"
+									placeholder="Enter password" data-ng-model="user.password">
+							</div>
+						</div>
+						<div class="modal-footer">
+							<input type="submit" class="btn btn-success" value="Submit" />
+							<button id="cancle" type="button" class="btn btn-default"
+								data-dismiss="modal">Cancle</button>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+	<div class="modal fade" id="regModal" role="dialog"
+		ng-controller="SignUpCtrl">
+		<div class="modal-dialog">
+
+			<!-- Modal content-->
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+					<h4 class="modal-title">Sign up</h4>
+				</div>
+				<div class="modal-body">
+					<form ng-submit="signUp(user)" class="form-horizontal register">
+						<div class="form-group">
+							<label class="control-label col-sm-3" for="email">User
+								name:</label>
+							<div class="col-sm-9">
+
+								<input type="text" class="form-control" id="username"
+									placeholder="Enter username" data-ng-model="user.username">
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="control-label col-sm-3" for="email">Name:</label>
+							<div class="col-sm-9">
+								<input type="text" class="form-control" id="name"
+									placeholder="Enter name" data-ng-model="user.name">
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="control-label col-sm-3" for="email">Surname:</label>
+							<div class="col-sm-9">
+								<input type="text" class="form-control" id="surname"
+									placeholder="Enter surname" data-ng-model="user.surname">
+							</div>
+						</div>
+
+						<div class="form-group">
+							<label class="control-label col-sm-3" for="email">Password:</label>
+							<div class="col-sm-9">
+								<input type="password" class="form-control" id="password"
+									placeholder="Enter password" data-ng-model="user.password">
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="control-label col-sm-3" for="email">Phone:</label>
+							<div class="col-sm-9">
+								<input type=text class="form-control" id="phone"
+									placeholder="Enter phone number" data-ng-model="user.phone">
+							</div>
+						</div>
+
+						<div class="form-group">
+							<label class="control-label col-sm-3" for="email">Email:</label>
+							<div class="col-sm-9">
+								<input type="email" class="form-control" id="email"
+									placeholder="Enter email" data-ng-model="user.email">
+							</div>
+						</div>
+
+						<div class="modal-footer">
+							<input type="submit" class="btn btn-success" value="Submit" />
+							<button id="cancle" type="button" class="btn btn-default"
+								data-dismiss="modal">Cancle</button>
+						</div>
+					</form>
+				</div>
+
+			</div>
+
+		</div>
+	</div>
+
+</nav>
