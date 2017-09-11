@@ -53,6 +53,10 @@ angular.module('App',['ngRoute','angAccordion','ngCookies'],function($httpProvid
     .when("/users", {
         templateUrl : "ForumClient/views/users.html",
         activelink: 'users'
+    })
+    .when("/new-forum", {
+        templateUrl : "ForumClient/views/new-forum.html",
+        activelink: 'new-forum'
     }).otherwise({ redirectTo: '/' });
     
     
@@ -75,6 +79,8 @@ angular.module('App',['ngRoute','angAccordion','ngCookies'],function($httpProvid
 	        if($cookies.get('user') == null)
 	        	$location.path( "/" );
 	        if(next == "http://localhost:8080/Forum/#/users" && $cookies.get('user') != 'admin')
+	        	$location.path( "/" );
+	        if(next == "http://localhost:8080/Forum/#/new-forum" && $cookies.get('user') != 'admin')
 	        	$location.path( "/" );
 	        	
 	        	

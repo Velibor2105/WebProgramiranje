@@ -1,37 +1,45 @@
 angular.module('App')
 
-.controller('NavBarCtrl',['$scope','$route', function($scope,$route) {
-	
-	    //$scope.homeClass = "active";
-	
-		var currentLink = $route.current.$$route.activelink;
+.controller('NavBarCtrl', [ '$scope', '$route', function($scope, $route) {
+
+			var currentLink = $route.current.$$route.activelink;
 		
-			if(currentLink == "forums"){
-				 $scope.homeClass = "active";
-				  $scope.userClass = "";
+			if (currentLink == "forums") {
+				$scope.homeClass = "active";
+				$scope.userClass = "";
+				$scope.newForumClass = "";
 			}
-			if(currentLink == "users"){
+			if (currentLink == "users") {
 				$scope.userClass = "active";
-				 $scope.homeClass = "";
-				  
+				$scope.homeClass = "";
+				$scope.newForumClass = "";
+		
 			}
-	
-		$scope.changeState = function (activeLink) {
-				if(activeLink == "forums"){
-					 $scope.homeClass = "active";
-					  $scope.userClass = "";
+			if (currentLink == "new-forum") {
+				$scope.newForumClass = "active";
+				$scope.userClass = "";
+				$scope.homeClass = "";
+		
+			}
+		
+			$scope.changeState = function(activeLink) {
+				if (activeLink == "forums") {
+					$scope.homeClass = "active";
+					$scope.userClass = "";
+					$scope.newForumClass = "";
 				}
-				if(activeLink == "users"){
+				if (activeLink == "users") {
 					$scope.userClass = "active";
-					 $scope.homeClass = "";
-					  
+					$scope.homeClass = "";
+					$scope.newForumClass = "";
+		
 				}
-		}
-	
-	  
+				if (activeLink == "new-forum") {
+					$scope.newForumClass = "active";
+					$scope.userClass = "";
+					$scope.homeClass = "";
 		
-	   
-	   
-	
-		
-}]);
+				}
+			}
+
+} ]);
