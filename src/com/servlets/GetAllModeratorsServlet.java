@@ -2,33 +2,31 @@ package com.servlets;
 
 import java.io.IOException;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.entities.User;
+import com.business.UserBL;
+import com.google.gson.Gson;
 
-
-public class UserServlet extends HttpServlet {
+public class GetAllModeratorsServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
- 
-    public UserServlet() {
-     
+
+    public GetAllModeratorsServlet() {
+        super();
+       
     }
 
-
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		User user = (User)request.getSession().getAttribute("user");
-		if(user != null){
-			RequestDispatcher disp = getServletContext().getRequestDispatcher("/adminpage.jsp");
-			disp.forward(request, response);
-			return;
-		}
-		else
-			response.sendError(HttpServletResponse.SC_NOT_FOUND);
+			
+		String path = getServletContext().getRealPath("");
+		UserBL userBL = new UserBL(path);
+		
+		String json = new Gson().toJson(userBL.GetModerators());
+		response.getWriter().write(json.toString());
+		
 	}
 
 

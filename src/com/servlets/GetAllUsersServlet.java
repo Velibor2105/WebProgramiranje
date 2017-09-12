@@ -16,7 +16,6 @@ import com.google.gson.Gson;
 
 public class GetAllUsersServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-    private ArrayList<User> users;
        
     public GetAllUsersServlet() {
         super();
@@ -26,9 +25,8 @@ public class GetAllUsersServlet extends HttpServlet {
 		String path = getServletContext().getRealPath("");
 		UserBL userbl = new UserBL(path);
 		
-		users = userbl.GetUsers();
-		String json = new Gson().toJson(users);
-		 response.getWriter().write(json.toString());
+		String json = new Gson().toJson(userbl.GetUsers());
+		response.getWriter().write(json.toString());
 		
 		
 	}

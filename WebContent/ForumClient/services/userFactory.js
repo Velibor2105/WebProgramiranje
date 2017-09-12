@@ -56,6 +56,12 @@ angular.module('App')
 			}
 			return $http.post('/Forum/ChangeRoleServlet', user)
 			
+		},
+		
+		getAllModerators: function() {
+			   
+			  return $http.get('/Forum/GetAllModeratorsServlet');
+		
 		}
 		
 		
