@@ -67,7 +67,8 @@ angular.module('App',['ngRoute','angAccordion','ngCookies'],function($httpProvid
 }])
 .run(function ($rootScope,$cookies,$location){
 	
-	var cookieData = $cookies.get('user');
+	var cookieData = $cookies.get('role');
+
 	if(cookieData == 'admin')
 		$rootScope.isAdmin = 'true';
 	if(cookieData == 'moderator')
@@ -76,11 +77,11 @@ angular.module('App',['ngRoute','angAccordion','ngCookies'],function($httpProvid
 		$rootScope.isUser = 'true';
 	
 	 $rootScope.$on("$locationChangeStart", function(event, next, current) { 
-	        if($cookies.get('user') == null)
+	        if($cookies.get('role') == null)
 	        	$location.path( "/" );
-	        if(next == "http://localhost:8080/Forum/#/users" && $cookies.get('user') != 'admin')
+	        if(next == "http://localhost:8080/Forum/#/users" && $cookies.get('role') != 'admin')
 	        	$location.path( "/" );
-	        if(next == "http://localhost:8080/Forum/#/new-forum" && $cookies.get('user') != 'admin')
+	        if(next == "http://localhost:8080/Forum/#/new-forum" && $cookies.get('role') != 'admin' && next == "http://localhost:8080/Forum/#/new-forum" && $cookies.get('role') != 'moderator')
 	        	$location.path( "/" );
 	        	
 	        	

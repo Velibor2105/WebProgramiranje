@@ -12,7 +12,7 @@
 			<ul class="nav navbar-nav"  ng-controller="NavBarCtrl">
 				<li ng-click="changeState('forums')" class="{{homeClass}}"><a href="#/">Home</a></li>
 				<li ng-if="isAdmin" ng-click="changeState('users')" class="{{userClass}}"><a href="#/users">Edit users</a></li>
-				<li ng-if="isAdmin" ng-click="changeState('new-forum')" class="{{newForumClass}}"><a href="#/new-forum">New forum</a></li>
+				<li ng-if="isAdmin || isModerator" ng-click="changeState('new-forum')" class="{{newForumClass}}"><a href="#/new-forum">New forum</a></li>
 			</ul>
 			<ul class="nav navbar-nav navbar-right">
 				<li ng-if="!isAdmin && !isUser && !isModerator"><a data-toggle="modal" data-target="#logModal"><span
@@ -137,3 +137,14 @@
 	</div>
 
 </nav>
+<div ng-controller="UserInfoCtrl">
+ <div class="panel panel-success user-info"  ng-if="isLoged">
+      <div class="panel-heading">User info:</div>
+      <div class="panel-body">
+      	<ul style="list-style-type: none;">
+      		<li>User name: {{userUsername}}</li>
+      		<li>Role: {{userRole}}</li>
+      	</ul>
+      </div>
+ </div>
+ </div>

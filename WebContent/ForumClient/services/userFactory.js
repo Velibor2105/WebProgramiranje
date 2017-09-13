@@ -29,8 +29,11 @@ angular.module('App')
 						$rootScope.isUser = 'user';
 					alert('Success login!');
 					$('#logModal').modal('hide');
-					$cookies.put('user', response.data);
+					$cookies.put('role', response.data);
 					$cookies.put('username', user.username);
+					$rootScope.isLoged = true;
+					$rootScope.userRole = response.data;
+					$rootScope.userUsername = user.username
 				}
 				}, function (error) {
 					alert('error!');
@@ -41,8 +44,10 @@ angular.module('App')
 			$rootScope.isAdmin = false;
 			$rootScope.isModerator = false;
 			$rootScope.isUser = false;
-			$cookies.remove('user');
+			$cookies.remove('role');
+			$cookies.remove('username');
 			alert('Successfully logout!');
+			$rootScope.isLoged = false;
 			
 		},
 		

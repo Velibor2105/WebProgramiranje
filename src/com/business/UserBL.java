@@ -52,7 +52,7 @@ public class UserBL {
 		ArrayList<User> moderators = new ArrayList<User>();
 		
 		for (int i = 0; i < users.size(); i++) {
-			if (users.get(i).getRole().equals("moderator")) {
+			if (users.get(i).getRole().equals("moderator") || users.get(i).getRole().equals("admin")) {
 				moderators.add(users.get(i));
 			}
 		}
