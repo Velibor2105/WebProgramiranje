@@ -7,7 +7,7 @@ public class Forum implements java.io.Serializable{
 	private String Name;
 	private String Description;
 	private String Moderator;
-	private String Roles;
+	private String Rules;
 	private ArrayList<String> Moderators; 
 	
 	public Forum() {
@@ -15,22 +15,22 @@ public class Forum implements java.io.Serializable{
 	}
 	
 	
-	public Forum(String name, String description,String roles, String moderator, ArrayList<String> moderators) {
+	public Forum(String name, String description,String rules, String moderator, ArrayList<String> moderators) {
 		Name = name;
 		Description = description;
 		Moderator = moderator;
 		Moderators = moderators;
-		Roles = roles;
+		Rules = rules;
 	}
 
 
 	public String getRoles() {
-		return Roles;
+		return Rules;
 	}
 
 
-	public void setRoles(String roles) {
-		Roles = roles;
+	public void setRoles(String rules) {
+		Rules = rules;
 	}
 
 

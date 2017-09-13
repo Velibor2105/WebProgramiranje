@@ -38,6 +38,11 @@
 	overflow-x: hidden;
 	
 }
+.moderator-italic {
+	position: relative;
+	bottom: 0;
+    right: -900px;
+}
 
 @import url(https://fonts.googleapis.com/css?family=Open+Sans:400,700,300);
 footer { background-color:#0c1a1e; min-height:377px; font-family: 'Open Sans', sans-serif; }
