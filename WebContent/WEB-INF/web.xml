@@ -51,7 +51,7 @@
     <servlet-name>GetAllUsersServlet</servlet-name>
     <url-pattern>/GetAllUsersServlet</url-pattern>
   </servlet-mapping>
-    <servlet>
+  <servlet>
     <description></description>
     <display-name>GetAllModeratorsServlet</display-name>
     <servlet-name>GetAllModeratorsServlet</servlet-name>
@@ -60,5 +60,25 @@
   <servlet-mapping>
     <servlet-name>GetAllModeratorsServlet</servlet-name>
     <url-pattern>/GetAllModeratorsServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>AddNewForumServlet</display-name>
+    <servlet-name>AddNewForumServlet</servlet-name>
+    <servlet-class>com.servlets.AddNewForumServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AddNewForumServlet</servlet-name>
+    <url-pattern>/AddNewForumServlet</url-pattern>
+  </servlet-mapping>
+    <servlet>
+    <description></description>
+    <display-name>GetAllForumsServlet</display-name>
+    <servlet-name>GetAllForumsServlet</servlet-name>
+    <servlet-class>com.servlets.GetAllForumsServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>GetAllForumsServlet</servlet-name>
+    <url-pattern>/GetAllForumsServlet</url-pattern>
   </servlet-mapping>
 </web-app>

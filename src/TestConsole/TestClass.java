@@ -34,20 +34,6 @@ public class TestClass {
        ForumRepository fr = new ForumRepository("C://Users//Velior//Desktop//Testing//WebContent//data//users.txt");
        
        
-       Forum forum = new Forum("FirstForum1","Description for fourm","Velibor Stancic",moderators);
-       Forum forum1 = new Forum("FirstForum2","Description for fourm","Velibor Stancic",moderators);
-       Forum forum2 = new Forum("FirstForum3","Description for fourm","Velibor Stancic",moderators);
-       Forum forum3 = new Forum("FirstForum4","Description for fourm","Velibor Stancic",moderators);
-       Forum forum4 = new Forum("FirstForum5","Description for fourm","Velibor Stancic",moderators);
-       Forum forum5 = new Forum("FirstForum6","Description for fourm","Velibor Stancic",moderators);
-       
-       fr.AddForum(forum);
-       fr.AddForum(forum1);
-       fr.AddForum(forum2);
-       fr.AddForum(forum3);
-       fr.AddForum(forum4);
-       fr.AddForum(forum5);
-       
        
        
      

@@ -1,9 +1,6 @@
 angular.module('App')
 
-.controller('NewForumCtrl',['$scope','userFactory',function ($scope,userFactory) {
-	
-
-	
+.controller('NewForumCtrl',['$scope','userFactory','$cookies','forumFactory',function ($scope,userFactory,$cookies,forumFactory) {
 	
 	userFactory.getAllModerators()
 	.success(function (response) {
@@ -15,12 +12,20 @@ angular.module('App')
 	
 	$scope.addForum = function (data) {
 		
-		var selectedAgents = [];
+		var selectedModerators = [];
 	    angular.forEach($scope.moderators, function (moderator) {
 	        if (moderator.isSelected) {
-	            selectedAgents.push(moderator);
+	        	selectedModerators.push(moderator.UserName);
 	        }
 	    });
+	    
+	    var sendingData = {
+	    		data : data,
+	    		moderator : $cookies.get('username'),
+	    		moderators : selectedModerators
+	    };
+	    
+	    forumFactory.addNewForum(sendingData);
 	}
 	
 }]);

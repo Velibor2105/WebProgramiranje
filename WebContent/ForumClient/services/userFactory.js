@@ -29,7 +29,8 @@ angular.module('App')
 						$rootScope.isUser = 'user';
 					alert('Success login!');
 					$('#logModal').modal('hide');
-					$cookies.put('user', response.data)
+					$cookies.put('user', response.data);
+					$cookies.put('username', user.username);
 				}
 				}, function (error) {
 					alert('error!');

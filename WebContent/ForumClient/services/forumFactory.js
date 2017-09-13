@@ -1,19 +1,35 @@
 angular.module('App')
 
-.factory('forumFactory',['$http','$rootScope','$cookies', function ($http,$rootScope,$cookies,$location) {
+.factory('forumFactory',['$http','$rootScope','$cookies','$location','$routeParams','$window', function ($http,$rootScope,$cookies,$location,$routeParams,$window) {
 	
 	return {
 		
-		getAllModerators: function() {
-			   
-			   $http.post('/Forum/RegisterServlet', user)
-			   .then(function (response) {
-					alert(response.data);
-					$('#regModal').modal('hide');
-				}, function (error) {
-					alert('error!');
-				});
-			}
+		addNewForum : function (data){
+			
+			$http.post('/Forum/AddNewForumServlet', {
+				name : data.data.name,
+				description : data.data.description,
+				moderator : data.moderator,
+				rules : data.data.rules,
+				moderators : JSON.stringify(data.moderators)
+	     	})
+			.then(function (response) {
+				if(response.data == "Forum alredy exist!")
+					alert("Forum alredy exist!");
+				else
+					alert("Forum " + response.data + " successfully added!");
+				
+				$window.location.reload();
+			},function (error) {
+				alert(error);
+			});
+		},
+		
+		getAllForums : function () {
+			
+		   return $http.get('/Forum/GetAllForumsServlet');
+		   
+		}
 		
 		
 				
