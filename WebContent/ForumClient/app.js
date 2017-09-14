@@ -57,6 +57,10 @@ angular.module('App',['ngRoute','angAccordion','ngCookies'],function($httpProvid
     .when("/new-forum", {
         templateUrl : "ForumClient/views/new-forum.html",
         activelink: 'new-forum'
+    })
+    .when("/new-theme", {
+        templateUrl : "ForumClient/views/new-theme.html",
+        activelink: 'new-theme'
     }).otherwise({ redirectTo: '/' });
     
     

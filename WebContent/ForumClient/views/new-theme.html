@@ -1,0 +1,15 @@
+<div ng-controller="ThemeCtrl">
+<div class="container">
+  <h2>Add theme to forum</h2>
+  <p>In order to add new theme you need to select the forum</p>
+  <form>
+    <div class="form-group">
+      <label for="sel1">Select forum:</label>
+      <select class="form-control" id="sel1" ng-options="forum as forum.Name for forum in forums" ng-model="item" ng-change="getForum()" placeholder="Chose forum">
+      </select>
+    </div>
+  </form>
+</div>
+<div style="min-height: 250px;">
+</div>
+</div>
