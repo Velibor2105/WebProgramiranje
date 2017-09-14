@@ -1,15 +1,69 @@
 <div ng-controller="ThemeCtrl">
-<div class="container">
-  <h2>Add theme to forum</h2>
-  <p>In order to add new theme you need to select the forum</p>
-  <form>
-    <div class="form-group">
-      <label for="sel1">Select forum:</label>
-      <select class="form-control" id="sel1" ng-options="forum as forum.Name for forum in forums" ng-model="item" ng-change="getForum()" placeholder="Chose forum">
-      </select>
-    </div>
-  </form>
-</div>
-<div style="min-height: 250px;">
-</div>
+	<div class="container">
+	  <h2>Add theme to forum</h2>
+	  <p>In order to add new theme you need to select the forum</p>
+	  <form>
+	    <div class="form-group">
+	      <label for="sel1">Select forum:</label>
+	      <select class="form-control" id="sel1" ng-options="forum as forum.Name for forum in forums" ng-model="item" ng-change="getForum()">
+	      </select>
+	    </div>
+	  </form>
+	</div>
+	<div style="min-height: 350px;" ng-if="!isChosed">
+	
+	</div>
+	<div ng-if="isChosed" style="margin-top : 45px;">
+		<div class="container">
+		  <form class="form-horizontal" ng-submit="saveTheme(theme)">
+		  
+		  	<div class="form-group">
+		      <label class="control-label col-sm-2" for="email">Type:</label>
+		      <div class="col-sm-10">
+		        <select class="form-control" id="sel1" ng-options="type as type.Name for type in types"  ng-model="itemm" ng-change="getType(itemm)">
+		      
+	            </select>
+		      </div>
+		    </div>
+		    
+		  
+		  
+		    <div class="form-group">
+		      <label class="control-label col-sm-2" for="title">Title:</label>
+		      <div class="col-sm-10">
+		        <input type="text" class="form-control" id="title" placeholder="Enter title" name="title" ng-model="theme.title">
+		      </div>
+		    </div>
+		    
+		    <div class="form-group" ng-if="t == 'Image'">
+		      <label class="control-label col-sm-2" for="email">Upload image:</label>
+		      <div class="col-sm-10">
+		         <input type="file" accept="image/*" id="capture" capture="camera" ng-click="disableGif()"  onchange="angular.element(this).scope().getBase64(this)">
+		      </div>
+		    </div>
+		    
+		    <div class="form-group" ng-if="t == 'Link'">
+		      <label class="control-label col-sm-2" for="email">Link:</label>
+		      <div class="col-sm-10">
+		        <input type="text" class="form-control" id="title" placeholder="Enter title" name="title" ng-model="theme.link">
+		      </div>
+		    </div>
+		    
+		    
+		     <div class="form-group" ng-if="t == 'Text'">
+		      <label class="control-label col-sm-2" for="email">Content:</label>
+		      <div class="col-sm-10">
+		        <textarea class="form-control" rows="5" id="comment" ng-model="theme.content"></textarea>
+		      </div>
+		    </div>
+		    
+		    
+		    <div class="form-group" ng-if="typeIsSelected">        
+		      <div class="col-sm-offset-2 col-sm-10">
+		        <button type="submit" class="btn btn-default">Submit</button>
+		      </div>
+		    </div>
+		  </form>
+		</div>
+	</div>
 </div>

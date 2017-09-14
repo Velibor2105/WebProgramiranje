@@ -1,9 +1,14 @@
 package com.entities;
 
 import java.util.Date;
+import java.io.Serializable;
 
-public class Theme {
+public class Theme implements Serializable {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private String ParentForum;
 	private String Title;
 	private String Type;
@@ -13,10 +18,15 @@ public class Theme {
 	private Date DateOfCreation; 
 	private int PositiveVotes;
 	private int NegativeVotes;
+	private String Base64;
+	private String Link;
 	
 	
-	public Theme(String parentForum, String title, String type, String author, String content, String comments, Date dateOfCreation, int positiveVotes, int negativeVotes) {
 
+	
+	public Theme(String parentForum, String title, String type, String author, String content, String comments, Date dateOfCreation, int positiveVotes, int negativeVotes, String base64, String link) {
+
+		super();
 		ParentForum = parentForum;
 		Title = title;
 		Type = type;
@@ -26,7 +36,8 @@ public class Theme {
 		DateOfCreation = dateOfCreation;
 		PositiveVotes = positiveVotes;
 		NegativeVotes = negativeVotes;
-		
+		Base64 = base64;
+		Link = link;
 	}
 
 
@@ -93,6 +104,30 @@ public class Theme {
 	public Date getDateOfCreation() {
 		return DateOfCreation;
 	}
+	
+	public String getBase64() {
+		return Base64;
+	}
+
+
+	public void setBase64(String base64) {
+		Base64 = base64;
+	}
+
+
+	public String getLink() {
+		return Link;
+	}
+
+
+	public void setLink(String link) {
+		Link = link;
+	}
+
+
+	public Theme() {
+	}
+	
 
 
 	public void setDateOfCreation(Date dateOfCreation) {

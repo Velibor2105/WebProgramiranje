@@ -71,7 +71,7 @@
     <servlet-name>AddNewForumServlet</servlet-name>
     <url-pattern>/AddNewForumServlet</url-pattern>
   </servlet-mapping>
-    <servlet>
+  <servlet>
     <description></description>
     <display-name>GetAllForumsServlet</display-name>
     <servlet-name>GetAllForumsServlet</servlet-name>
@@ -80,5 +80,15 @@
   <servlet-mapping>
     <servlet-name>GetAllForumsServlet</servlet-name>
     <url-pattern>/GetAllForumsServlet</url-pattern>
+  </servlet-mapping>
+    <servlet>
+    <description></description>
+    <display-name>AddNewThemeServlet</display-name>
+    <servlet-name>AddNewThemeServlet</servlet-name>
+    <servlet-class>com.servlets.AddNewThemeServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AddNewThemeServlet</servlet-name>
+    <url-pattern>/AddNewThemeServlet</url-pattern>
   </servlet-mapping>
 </web-app>
