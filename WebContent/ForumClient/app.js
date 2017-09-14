@@ -61,6 +61,10 @@ angular.module('App',['ngRoute','angAccordion','ngCookies'],function($httpProvid
     .when("/new-theme", {
         templateUrl : "ForumClient/views/new-theme.html",
         activelink: 'new-theme'
+    })
+    .when("/themes", {
+        templateUrl : "ForumClient/views/themes.html",
+        activelink: 'themes'
     }).otherwise({ redirectTo: '/' });
     
     
@@ -81,8 +85,10 @@ angular.module('App',['ngRoute','angAccordion','ngCookies'],function($httpProvid
 		$rootScope.isUser = 'true';
 	
 	 $rootScope.$on("$locationChangeStart", function(event, next, current) { 
-	        if($cookies.get('role') == null)
-	        	$location.path( "/" );
+	     //   if($cookies.get('role') == null)
+	      //  	$location.path( "/" );
+		 	if(next == "http://localhost:8080/Forum/#/themes")
+	        	$location.path( "/themes" );
 	        if(next == "http://localhost:8080/Forum/#/users" && $cookies.get('role') != 'admin')
 	        	$location.path( "/" );
 	        if(next == "http://localhost:8080/Forum/#/new-forum" && $cookies.get('role') != 'admin' && next == "http://localhost:8080/Forum/#/new-forum" && $cookies.get('role') != 'moderator')

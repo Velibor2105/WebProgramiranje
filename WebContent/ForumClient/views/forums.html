@@ -14,8 +14,12 @@
         <h3>Co-moderators</h3>
         <ul>
 		  <li ng-repeat="moderator in forum.Moderators">{{moderator}}</li>
-		</ul>  
+		</ul>
+		<div ng-controller="RenderThemesCtrl">
+			<button type="button" class="btn btn-success" ng-click="getThemeForForums(forum.Name)">Visit {{forum.Name}} forum</button>
+		</div>  
         <h4 class="moderator-italic">Moderator: <span style="font-style: italic;">{{forum.Moderator}}</span></h4>
+        
      </collapsible-item>
 
     </ang-accordion>

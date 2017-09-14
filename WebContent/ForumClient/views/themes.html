@@ -1,0 +1,14 @@
+ <div ng-controller="RenderThemesCtrl" style="margin-right : 300px; margin-left : 300px;">
+    <ang-accordion class="accordion" one-at-a-time="true" icon-position="right" close-icon-class="fa fa-chevron-right accordion-container" open-icon-class="fa fa-chevron-down">
+
+      <collapsible-item  ng-repeat="theme in themes" item-title="{{theme.Title}}">
+        <h3>Testing</h3>
+        <div>
+    <p>Taken from wikpedia</p>
+    <img src="{{theme.Base64}}" alt="Red dot" />
+</div> 
+     </collapsible-item>
+
+    </ang-accordion>
+    
+ </div>

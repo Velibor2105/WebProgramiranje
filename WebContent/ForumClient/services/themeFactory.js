@@ -15,6 +15,16 @@ angular.module('App')
 				alert(error);
 			});
 			
+		},
+		
+		getThemeForForum : function (name) {
+			var config = {
+					params : {
+						forum : name
+					}
+			}
+		 return	$http.get('/Forum/GetThemeServlet', config);
+		
 		}
 		
 	}

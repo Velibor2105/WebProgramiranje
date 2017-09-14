@@ -1,6 +1,6 @@
 angular.module('App')
 
-.controller('ThemeCtrl',['$scope','forumFactory','themeFactory','$cookies',function ($scope,forumFactory,themeFactory,$cookies) {
+.controller('AddThemeCtrl',['$scope','forumFactory','themeFactory','$cookies',function ($scope,forumFactory,themeFactory,$cookies) {
 	
 	
 	$scope.types = [{Name : "Image"},{Name : "Link"},{Name : "Text"}];
