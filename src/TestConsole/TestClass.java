@@ -18,15 +18,15 @@ public class TestClass {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		
-		//CommentRepositiry cr = new CommentRepositiry("C:\\Users\\v.stancic\\Desktop\\faks\\web programiranje\\Forum\\.metadata\\.plugins\\org.eclipse.wst.server.core\\tmp0\\wtpwebapps\\Forum");
+		CommentRepositiry cr = new CommentRepositiry("C:\\Users\\v.stancic\\Desktop\\faks\\web programiranje\\Forum\\.metadata\\.plugins\\org.eclipse.wst.server.core\\tmp0\\wtpwebapps\\Forum");
 		
 		
 		   // Comment c1 = new Comment("f1","t1",1,new Date(),0,"test content",0,0,false, new ArrayList<Comment>());
 		    
 		    
-			Comment c2 = new Comment("f1","t1",2,new Date(),1,"test content",0,0,false, new ArrayList<Comment>());
-			Comment c3 = new Comment("f1","t1",3,new Date(),1,"test content",0,0,false, new ArrayList<Comment>());
-			Comment c4 = new Comment("f1","t1",4,new Date(),1,"test content",0,0,false, new ArrayList<Comment>());
+			Comment c2 = new Comment("f1","t1","ja",2,new Date(),"test content",0,0,false, new ArrayList<Comment>());
+			Comment c3 = new Comment("f1","t1","ja",3,new Date(),"test content",0,0,false, new ArrayList<Comment>());
+			Comment c4 = new Comment("f1","t1","ja",4,new Date(),"test content",0,0,false, new ArrayList<Comment>());
 			
 			ArrayList<Comment> contain = new ArrayList<Comment>();
 
@@ -34,16 +34,19 @@ public class TestClass {
 			contain.add(c3);
 			contain.add(c4);
 
-			Comment c1 = new Comment("f1","t1",1,new Date(),0,"test content",0,0,false, contain);
+			Comment c1 = new Comment("f1","t1","ja",1,new Date(),"test content",0,0,false, contain);
 			
 			
 			 Comment com = search(c1,4);
 			 
-			 com.getContain().add(new Comment("f1","t1",5,new Date(),1,"test content",0,0,false, new ArrayList<Comment>()));
+			 com.getContain().add(new Comment("f1","t1","ja",5,new Date(),"test content",0,0,false, new ArrayList<Comment>()));
 			 
              Comment com1 = search(c1,5);
 			 
-			 com1.getContain().add(new Comment("f1","t1",6,new Date(),1,"test content",0,0,false, new ArrayList<Comment>()));
+			 com1.getContain().add(new Comment("f1","t1","ja",6,new Date(),"test content",0,0,false, new ArrayList<Comment>()));
+			 
+			 
+			 cr.AddComment(c1);
 			
 			String json = new Gson().toJson(c1);
 			

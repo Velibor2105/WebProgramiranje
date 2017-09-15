@@ -5,6 +5,8 @@ import java.util.ArrayList;
 import org.json.JSONArray;
 import org.json.JSONException;
 
+import com.entities.Comment;
+
 public class Helpers {
 
 	public static ArrayList<String> convertStringToArrayList(String array){
@@ -23,5 +25,17 @@ public class Helpers {
 		}  
 		
 		return listdata;
+	}
+	
+	public static Comment search(Comment comment, int id) {
+		
+	    if (comment.getCommentId() == id) 
+	    	return comment;
+	    
+	    for (Comment c : comment.getContain()) {
+	    	Comment found = search(c, id);
+	          if (found != null) return found;
+		}
+	    return null;
 	}
 }

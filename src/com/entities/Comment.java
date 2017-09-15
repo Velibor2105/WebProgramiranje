@@ -11,28 +11,28 @@ public class Comment implements Serializable {
 	private static final long serialVersionUID = 1L;
 	private String Forum;
 	private String Theme;
+	private String Author;
 	private int CommentId;
 	private Date DateOfCreation;
-	private int ParentCommentId;
 	private String Content;
 	private int PositiveVotes;
 	private int NegativeVotes;
 	private boolean Changed;
 	private ArrayList<Comment> Contain;
 	
-	public Comment(String forum, String theme, int commentId, Date dateOfCreation, int parentCommentId, String content,
+	public Comment(String forum, String theme,String author, int commentId, Date dateOfCreation, String content,
 			int positiveVotes, int negativeVotes, boolean changed, ArrayList<Comment> contain) {
 		super();
 		Forum = forum;
 		Theme = theme;
 		CommentId = commentId;
 		DateOfCreation = dateOfCreation;
-		ParentCommentId = parentCommentId;
 		Content = content;
 		PositiveVotes = positiveVotes;
 		NegativeVotes = negativeVotes;
 		Changed = changed;
 		Contain = contain;
+		Author = author;
 	}
 
 	public String getForum() {
@@ -67,12 +67,12 @@ public class Comment implements Serializable {
 		DateOfCreation = dateOfCreation;
 	}
 
-	public int getParentCommentId() {
-		return ParentCommentId;
+	public String getAuthor() {
+		return Author;
 	}
 
-	public void setParentCommentId(int parentCommentId) {
-		ParentCommentId = parentCommentId;
+	public void setAuthor(String author) {
+		Author = author;
 	}
 
 	public String getContent() {
