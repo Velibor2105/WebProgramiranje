@@ -91,7 +91,7 @@
     <servlet-name>AddNewThemeServlet</servlet-name>
     <url-pattern>/AddNewThemeServlet</url-pattern>
   </servlet-mapping>
-    <servlet>
+  <servlet>
     <description></description>
     <display-name>GetThemeServlet</display-name>
     <servlet-name>GetThemeServlet</servlet-name>
@@ -100,5 +100,25 @@
   <servlet-mapping>
     <servlet-name>GetThemeServlet</servlet-name>
     <url-pattern>/GetThemeServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>AddNewCommentServlet</display-name>
+    <servlet-name>AddNewCommentServlet</servlet-name>
+    <servlet-class>com.servlets.AddNewCommentServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AddNewCommentServlet</servlet-name>
+    <url-pattern>/AddNewCommentServlet</url-pattern>
+  </servlet-mapping>
+    <servlet>
+    <description></description>
+    <display-name>GetCommentsForForumServlet</display-name>
+    <servlet-name>GetCommentsForForumServlet</servlet-name>
+    <servlet-class>com.servlets.GetCommentsForForumServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>GetCommentsForForumServlet</servlet-name>
+    <url-pattern>/GetCommentsForForumServlet</url-pattern>
   </servlet-mapping>
 </web-app>

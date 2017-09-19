@@ -20,6 +20,8 @@ public class Comment implements Serializable {
 	private boolean Changed;
 	private ArrayList<Comment> Contain;
 	
+
+	
 	public Comment(String forum, String theme,String author, int commentId, Date dateOfCreation, String content,
 			int positiveVotes, int negativeVotes, boolean changed, ArrayList<Comment> contain) {
 		super();

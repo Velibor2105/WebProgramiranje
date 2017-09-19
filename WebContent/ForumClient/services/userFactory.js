@@ -1,6 +1,6 @@
 angular.module('App')
 
-.factory('userFactory',['$http','$rootScope','$cookies', function ($http,$rootScope,$cookies,$location) {
+.factory('userFactory',['$http','$rootScope','$cookies','$routeParams', function ($http,$rootScope,$cookies,$location,$routeParams) {
 	
 	return {
 		
@@ -33,7 +33,8 @@ angular.module('App')
 					$cookies.put('username', user.username);
 					$rootScope.isLoged = true;
 					$rootScope.userRole = response.data;
-					$rootScope.userUsername = user.username
+					$rootScope.userUsername = user.username;
+					location.reload();
 				}
 				}, function (error) {
 					alert('error!');

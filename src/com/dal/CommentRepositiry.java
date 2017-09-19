@@ -70,6 +70,29 @@ public class CommentRepositiry {
 		return true;
 	}
 	
+public boolean AddComments(ArrayList<Comment> comments) {
+		
+		ObjectOutputStream oos = null;
+		FileOutputStream fout = null;
+		try 
+		{
+		    fout = new FileOutputStream(this.path + "\\data\\comments.txt");
+		    oos = new ObjectOutputStream(fout);
+			oos.writeObject(comments);
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}finally {
+		    if(oos  != null){
+		        try {
+					oos.close();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+		    } 
+		}
+		return true;
+	}
+	
 	
 	public ArrayList<Comment> GetComments(){
 		return comments;

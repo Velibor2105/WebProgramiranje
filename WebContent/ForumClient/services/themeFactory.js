@@ -23,10 +23,17 @@ angular.module('App')
 						forum : name
 					}
 			}
-		 return	$http.get('/Forum/GetThemeServlet', config);
+		return	$http.get('/Forum/GetThemeServlet', config);
+		},
 		
+		getCommentsForForum : function (name) {
+			var config = {
+					params : {
+						forum : name
+					}
+			}
+			return	$http.get('/Forum/GetCommentsForForumServlet', config);
 		}
-		
 	}
 	
 		
