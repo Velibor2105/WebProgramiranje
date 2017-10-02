@@ -60,6 +60,10 @@
     cursor:pointer;
     
 } 
+.votes {
+	margin-top : 10px;
+	margin-bottom : 10px;	
+}
 
 
 @import url(https://fonts.googleapis.com/css?family=Open+Sans:400,700,300);

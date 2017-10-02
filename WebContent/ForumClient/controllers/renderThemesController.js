@@ -4,6 +4,9 @@ angular.module('App')
  
 	
 	
+	$scope.like = 0;
+	$scope.dislike = 120;
+	
 	themeFactory.getThemeForForum($cookies.get('currentForum'))
 	.then(function (response) {
 			$scope.themes = response.data;
@@ -24,7 +27,6 @@ angular.module('App')
 	   
    $scope.leaveMainComment = function (comment,theme) {
 		   
-	   //{ parentId : id, theme : theme, forum : forum, author : $cookies.get('username'), content : $scope.content}
 	   if(comment != ""){
    		$http.post('/Forum/AddNewCommentServlet', { parentId : "0", theme : theme, forum : $cookies.get('currentForum'), author : $cookies.get('username'), content : comment})
    		.then(function (success) {

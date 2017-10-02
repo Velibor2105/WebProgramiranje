@@ -1,5 +1,6 @@
 package com.entities;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.io.Serializable;
 
@@ -14,25 +15,25 @@ public class Theme implements Serializable {
 	private String Type;
 	private String Author;
 	private String Content;
-	private String Comments; //ovo ce biti novi entitet
+	private ArrayList<String> Likes; //ovo ce biti novi entitet
+	private ArrayList<String> DisLikes; //ovo ce biti novi entitet
 	private Date DateOfCreation; 
 	private int PositiveVotes;
 	private int NegativeVotes;
 	private String Base64;
 	private String Link;
-	
-	
 
-	
-	public Theme(String parentForum, String title, String type, String author, String content, String comments, Date dateOfCreation, int positiveVotes, int negativeVotes, String base64, String link) {
-
+	public Theme(String parentForum, String title, String type, String author, String content, ArrayList<String> likes,
+			ArrayList<String> disLikes, Date dateOfCreation, int positiveVotes, int negativeVotes, String base64,
+			String link) {
 		super();
 		ParentForum = parentForum;
 		Title = title;
 		Type = type;
 		Author = author;
 		Content = content;
-		Comments = comments;
+		Likes = likes;
+		DisLikes = disLikes;
 		DateOfCreation = dateOfCreation;
 		PositiveVotes = positiveVotes;
 		NegativeVotes = negativeVotes;
@@ -91,13 +92,25 @@ public class Theme implements Serializable {
 	}
 
 
-	public String getComments() {
-		return Comments;
+
+
+	public ArrayList<String> getLikes() {
+		return Likes;
 	}
 
 
-	public void setComments(String comments) {
-		Comments = comments;
+	public void setLikes(ArrayList<String> likes) {
+		Likes = likes;
+	}
+
+
+	public ArrayList<String> getDisLikes() {
+		return DisLikes;
+	}
+
+
+	public void setDisLikes(ArrayList<String> disLikes) {
+		DisLikes = disLikes;
 	}
 
 

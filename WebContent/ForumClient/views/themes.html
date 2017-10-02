@@ -34,6 +34,7 @@
 
 
       <collapsible-item  ng-repeat="theme in themes" item-title="{{theme.Title}}">
+ 
         <h3>Testing</h3>
         <div>
 		    <p>Taken from wikpedia</p>
@@ -43,6 +44,16 @@
 		    </p>
 		    <a ng-if="theme.Type == 'Link'" href="{{theme.Link}}">{{theme.Link}}</a>
 		</div> 
+	
+	 <div class="votes">
+      	<button type="button" class="btn btn-default btn-sm">
+          <span class="glyphicon glyphicon-thumbs-up"></span> {{like}}
+        </button>
+        <button type="button" class="btn btn-default btn-sm">
+          <span class="glyphicon glyphicon-thumbs-down"></span> {{dislike}}
+        </button>
+      </div>
+	
 	
 		<div class="comments">	
 	    <h4>Leave a Comment:</h4>
@@ -57,10 +68,7 @@
 		    <div ng-controller="TreeController">
 		        <tree ng-repeat="t in treeFamily | filter: { Theme: theme.Title } " family="t"></tree>
 		    </div>
-     
-     
-	</div>
-		
+    	</div>
      </collapsible-item>
 
     </ang-accordion>
