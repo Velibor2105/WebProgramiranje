@@ -1,6 +1,7 @@
 package com.servlets;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Date;
 
 import javax.servlet.ServletException;
@@ -37,7 +38,9 @@ public class AddNewThemeServlet extends HttpServlet {
 		String path = getServletContext().getRealPath("");
 		
 		ThemeBL themeBL = new ThemeBL(path);
-		Theme theme = new Theme(forum,title,type,author,content,"nista za sada",new Date(),Integer.parseInt(negativeVotes),Integer.parseInt(positiveVotes),base64,link);
+		ArrayList<String> likes = new ArrayList<String>();
+		ArrayList<String> disLikes = new ArrayList<String>();
+		Theme theme = new Theme(forum,title,type,author,content,likes,disLikes,new Date(),Integer.parseInt(negativeVotes),Integer.parseInt(positiveVotes),base64,link);
 		
 		String resp = themeBL.AddTheme(theme) == true ? "success" : "fail";
 		

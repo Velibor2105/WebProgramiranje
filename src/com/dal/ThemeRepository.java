@@ -8,6 +8,7 @@ import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 
 import com.entities.Theme;
+import com.entities.User;
 
 public class ThemeRepository {
 
@@ -73,5 +74,52 @@ public class ThemeRepository {
 	
 	public ArrayList<Theme> GetThemes(){
 		return themes;
+	}
+	
+	
+	
+	public  Theme GetThemeById(String id){
+		
+		 for (int i = 0; i < this.themes.size(); i++) 
+			if (themes.get(i).getTitle().equals(id))
+				return themes.get(i);
+		 
+       return null;
+	}
+	
+	public  void UpdateTheme(Theme theme){
+		
+		DeleteThemeById(theme.getTitle());
+		
+		AddTheme(theme);
+		
+	}
+	public void DeleteThemeById(String id){
+		for (int i = 0; i < themes.size(); i++) {
+			if(themes.get(i).getTitle().equals(id)){
+			   themes.remove(i);
+			}
+		}
+		
+		ObjectOutputStream oos = null;
+		FileOutputStream fout = null;
+	
+		try 
+		{
+		    fout = new FileOutputStream(this.path + "\\data\\themes.txt");
+		    oos = new ObjectOutputStream(fout);
+			oos.writeObject(themes);
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}finally {
+		    if(oos  != null){
+		        try {
+					oos.close();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+		    } 
+		}
+		
 	}
 }
