@@ -111,7 +111,7 @@
     <servlet-name>AddNewCommentServlet</servlet-name>
     <url-pattern>/AddNewCommentServlet</url-pattern>
   </servlet-mapping>
-    <servlet>
+  <servlet>
     <description></description>
     <display-name>GetCommentsForForumServlet</display-name>
     <servlet-name>GetCommentsForForumServlet</servlet-name>
@@ -120,5 +120,45 @@
   <servlet-mapping>
     <servlet-name>GetCommentsForForumServlet</servlet-name>
     <url-pattern>/GetCommentsForForumServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>AddRemoveLikesServlet</display-name>
+    <servlet-name>AddRemoveLikesServlet</servlet-name>
+    <servlet-class>com.servlets.AddRemoveLikesServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AddRemoveLikesServlet</servlet-name>
+    <url-pattern>/AddRemoveLikesServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>AddRemoveDisLikesServlet</display-name>
+    <servlet-name>AddRemoveDisLikesServlet</servlet-name>
+    <servlet-class>com.servlets.AddRemoveDisLikesServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AddRemoveDisLikesServlet</servlet-name>
+    <url-pattern>/AddRemoveDisLikesServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>GetLikesServlet</display-name>
+    <servlet-name>GetLikesServlet</servlet-name>
+    <servlet-class>com.servlets.GetLikesServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>GetLikesServlet</servlet-name>
+    <url-pattern>/GetLikesServlet</url-pattern>
+  </servlet-mapping>
+    <servlet>
+    <description></description>
+    <display-name>GetDisLikesServlet</display-name>
+    <servlet-name>GetDisLikesServlet</servlet-name>
+    <servlet-class>com.servlets.GetDisLikesServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>GetDisLikesServlet</servlet-name>
+    <url-pattern>/GetDisLikesServlet</url-pattern>
   </servlet-mapping>
 </web-app>

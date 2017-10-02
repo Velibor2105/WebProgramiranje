@@ -29,31 +29,20 @@ public class TestClass {
 		
 		ThemeBL themeBl = new ThemeBL("C:\\Users\\v.stancic\\Desktop\\faks\\web programiranje\\Forum\\.metadata\\.plugins\\org.eclipse.wst.server.core\\tmp0\\wtpwebapps\\Forum");
 		
-		themeBl.AddRemoveLike("mira", "First theme");
+		
+		//int t =	themeBl.AddRemoveLike("admin", "3");
+		
+     	int t =	themeBl.AddRemoveDisLike("admin", "3");
+		
+		
+		
+		System.out.println(t);
 		
 		
 		
 		
 		
-		
-		
-		CommentRepositiry cr = new CommentRepositiry("C:\\Users\\v.stancic\\Desktop\\faks\\web programiranje\\Forum\\.metadata\\.plugins\\org.eclipse.wst.server.core\\tmp0\\wtpwebapps\\Forum");
-		
-            
-		/*	Comment c1 = new Comment("Aelyria","fgdsg","ja",1,new Date(),"test content",0,0,false, new ArrayList<Comment>());
-			cr.AddComment(c1);
-			String json = new Gson().toJson(cr.GetComments());
-		    System.out.println("asd");*/
-		    
-		
-     		CommentBL commentBl = new CommentBL("C:\\Users\\v.stancic\\Desktop\\faks\\web programiranje\\Forum\\.metadata\\.plugins\\org.eclipse.wst.server.core\\tmp0\\wtpwebapps\\Forum");
-     		
-     		Comment c7 = new Comment("Aelyria","fgdsg","ja",7,new Date(),"test content",0,0,false, new ArrayList<Comment>());
-     		commentBl.AddComment(6, c7);
 
-     		String json1 = new Gson().toJson(commentBl.GetComments());
-     		
-     		System.out.println("sdf");
 		
 		
 	}

@@ -4,8 +4,24 @@ angular.module('App')
  
 	
 	
-	$scope.like = 0;
-	$scope.dislike = 120;
+	$scope.refreshLikes = function (theme) {
+		
+	   themeFactory.getLikes(theme)
+	   .then(function (success) {
+		   $scope.like = success.data;
+	   },function (error) {
+		   
+	   });
+	   
+	   themeFactory.getDisLikes(theme)
+	   .then(function (success) {
+		   $scope.dislike = success.data;
+	   },function (error) {
+		   
+	   })
+	}
+	
+
 	
 	themeFactory.getThemeForForum($cookies.get('currentForum'))
 	.then(function (response) {
@@ -53,5 +69,32 @@ angular.module('App')
    	    }
     }
 
+   
+   $scope.addRemoveLikes = function (theme) {
+	   
+	   themeFactory.addRemoveLikes($cookies.get('username'),theme)
+	   .then(function (success) {
+		   $scope.like = success.data;
+		   $scope.refreshLikes(theme);
+	   },function (error) {
+		   
+	   })
+   }
+   
+   $scope.addRemoveDisLikes = function (theme) {
+	   
+	   themeFactory.addRemoveDisLikes($cookies.get('username'),theme)
+	   .then(function (success) {
+		   $scope.dislike = success.data;
+		   $scope.refreshLikes(theme);
+	   },function (error) {
+		   
+	   })
+   }
+   
+   
+   
+   
+   
 	
 }]);

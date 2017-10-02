@@ -47,8 +47,7 @@ public class ThemeBL {
 		return false;
 	}
 	
-	
-	public void AddRemoveLike(String userName, String themeTitle) {
+	public int AddRemoveLike(String userName, String themeTitle) {
 		
 		Theme theme = tr.GetThemeById(themeTitle);
 		
@@ -60,10 +59,15 @@ public class ThemeBL {
 		else
 		    theme.setLikes(RemoveLike(theme.getLikes(), userName));
 		
+		theme.setNegativeVotes(theme.getDisLikes().size());
+		theme.setPositiveVotes(theme.getLikes().size());
+		
 		tr.UpdateTheme(theme);
+		
+		return theme.getPositiveVotes();
 	}
 	
-	public void AddRemoveDisLike(String userName, String themeTitle) {
+	public int AddRemoveDisLike(String userName, String themeTitle) {
 		
 		Theme theme = tr.GetThemeById(themeTitle);
 		
@@ -75,7 +79,12 @@ public class ThemeBL {
 		else
 		    theme.setDisLikes(RemoveDisLike(theme.getDisLikes(), userName));
 		
+		theme.setNegativeVotes(theme.getDisLikes().size());
+		theme.setPositiveVotes(theme.getLikes().size());
+		
 		tr.UpdateTheme(theme);
+		
+		return theme.getNegativeVotes();
 	}
 	
 	public boolean LikeExist(String userName, Theme theme) {
@@ -89,7 +98,7 @@ public class ThemeBL {
 		return false;
 	}
 	
-public boolean DisLikeExist(String userName, Theme theme) {
+    public boolean DisLikeExist(String userName, Theme theme) {
 		
 		ArrayList<String> users = theme.getDisLikes();
 		
@@ -110,11 +119,19 @@ public boolean DisLikeExist(String userName, Theme theme) {
 	}
 	
     public ArrayList<String> RemoveDisLike(ArrayList<String> users, String userName){
-		
+    	
 		for (int i = 0; i < users.size(); i++) {
 			if(users.get(i).equals(userName))
 				users.remove(i);
 		}
 		return users;
 	}
+    
+    public int GetLikes(String theme) {
+      return tr.GetThemeById(theme).getPositiveVotes();
+    }
+    
+    public int GetDisLikes(String theme) {
+        return tr.GetThemeById(theme).getNegativeVotes();
+      }
 }

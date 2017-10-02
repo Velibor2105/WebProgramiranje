@@ -33,7 +33,7 @@
   
 
 
-      <collapsible-item  ng-repeat="theme in themes" item-title="{{theme.Title}}">
+      <collapsible-item  ng-repeat="theme in themes" item-title="{{theme.Title}}"   ng-click="refreshLikes(theme.Title)">
  
         <h3>Testing</h3>
         <div>
@@ -46,10 +46,10 @@
 		</div> 
 	
 	 <div class="votes">
-      	<button type="button" class="btn btn-default btn-sm">
+      	<button type="button" class="btn btn-default btn-sm" ng-click="addRemoveLikes(theme.Title)">
           <span class="glyphicon glyphicon-thumbs-up"></span> {{like}}
         </button>
-        <button type="button" class="btn btn-default btn-sm">
+        <button type="button" class="btn btn-default btn-sm" ng-click="addRemoveDisLikes(theme.Title)">
           <span class="glyphicon glyphicon-thumbs-down"></span> {{dislike}}
         </button>
       </div>
