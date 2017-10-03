@@ -33,8 +33,10 @@ public class AddNewCommentServlet extends HttpServlet {
 		String parentId = request.getParameter("parentId");
 		
 		CommentBL commentBl = new CommentBL(path);
+		ArrayList<String> likes = new ArrayList<String>();
+		ArrayList<String> disLikes = new ArrayList<String>();
 		
-		Comment comment = new Comment(forum, theme, author, commentBl.GenerateNextCommentId(), new Date(), content, 0, 0, false, new ArrayList<Comment>());
+		Comment comment = new Comment(forum, theme, author, commentBl.GenerateNextCommentId(), new Date(), content, 0, 0, false, new ArrayList<Comment>(),likes,disLikes);
 		
 		String resp = null;
 		boolean res = commentBl.AddComment(Integer.parseInt(parentId), comment);

@@ -85,6 +85,14 @@ angular.module('App',['ngRoute','angAccordion','ngCookies','RecursionHelper'],fu
             '<div class="col-xs-10">' +
               '<h4>{{family.Author}} <small>{{family.DateOfCreation}}</small></h4>' +
                  '<p>{{family.Content}}</p>' +
+                 '<div class="votes">' +
+               	 '<button type="button" class="btn btn-default btn-sm" ng-click="likeComment(family.CommentId)">' +
+                 '<span class="glyphicon glyphicon-thumbs-up"></span> {{family.CommentId}}' +
+                 '</button>' +
+                 '<button type="button" class="btn btn-default btn-sm" ng-click="addRemoveDisLikes(theme.Title)">' +
+                 '<span class="glyphicon glyphicon-thumbs-down"></span> {{dislike}}' +
+                 '</button>' +
+                 '</div>' +
                  '<i class="reply"  ng-click="reply(family.CommentId, family.Forum, family.Theme)">Reply</i>' +
                  '<div class="form-group">' +
                  '<textarea class="form-control" rows="2" id="comment" ng-model="content"></textarea>' +
@@ -102,8 +110,6 @@ angular.module('App',['ngRoute','angAccordion','ngCookies','RecursionHelper'],fu
         	$scope.content = "";
         	
         	$scope.reply = function (id, forum, theme) {
-
-        		alert(id +" " + forum + " " +theme + " " + $cookies.get('username') + " " + $scope.content);
         		
         		if($scope.content != ""){
         		$http.post('/Forum/AddNewCommentServlet', { parentId : id, theme : theme, forum : forum, author : $cookies.get('username'), content : $scope.content})
@@ -130,6 +136,11 @@ angular.module('App',['ngRoute','angAccordion','ngCookies','RecursionHelper'],fu
         		
         	    }
         	}
+    		
+    		$scope.likeComment = function (commentId){
+    			alert(commentId);
+    		}
+        		
         },
         compile: function(element) {
             return RecursionHelper.compile(element, function(scope, iElement, iAttrs, controller, transcludeFn){

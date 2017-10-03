@@ -85,5 +85,9 @@ public class CommentBL {
 	    return comments;
 	}
 	
+	public void AddCommentLike() {
+		
+	}
+	
 	
 }

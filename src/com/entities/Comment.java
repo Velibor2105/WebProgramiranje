@@ -19,14 +19,16 @@ public class Comment implements Serializable {
 	private int NegativeVotes;
 	private boolean Changed;
 	private ArrayList<Comment> Contain;
+	private ArrayList<String> likes;
+	private ArrayList<String> disLikes;
 	
-
-	
-	public Comment(String forum, String theme,String author, int commentId, Date dateOfCreation, String content,
-			int positiveVotes, int negativeVotes, boolean changed, ArrayList<Comment> contain) {
+	public Comment(String forum, String theme, String author, int commentId, Date dateOfCreation, String content,
+			int positiveVotes, int negativeVotes, boolean changed, ArrayList<Comment> contain, ArrayList<String> likes,
+			ArrayList<String> disLikes) {
 		super();
 		Forum = forum;
 		Theme = theme;
+		Author = author;
 		CommentId = commentId;
 		DateOfCreation = dateOfCreation;
 		Content = content;
@@ -34,8 +36,11 @@ public class Comment implements Serializable {
 		NegativeVotes = negativeVotes;
 		Changed = changed;
 		Contain = contain;
-		Author = author;
+		this.likes = likes;
+		this.disLikes = disLikes;
 	}
+	
+
 
 	public String getForum() {
 		return Forum;
@@ -120,6 +125,31 @@ public class Comment implements Serializable {
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
+
+
+
+	public ArrayList<String> getLikes() {
+		return likes;
+	}
+
+
+
+	public void setLikes(ArrayList<String> likes) {
+		this.likes = likes;
+	}
+
+
+
+	public ArrayList<String> getDisLikes() {
+		return disLikes;
+	}
+
+
+
+	public void setDisLikes(ArrayList<String> disLikes) {
+		this.disLikes = disLikes;
+	}
+	
 	
 	
 
