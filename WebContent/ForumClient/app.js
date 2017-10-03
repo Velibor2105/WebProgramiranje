@@ -85,19 +85,20 @@ angular.module('App',['ngRoute','angAccordion','ngCookies','RecursionHelper'],fu
             '<div class="col-xs-10">' +
               '<h4>{{family.Author}} <small>{{family.DateOfCreation}}</small></h4>' +
                  '<p>{{family.Content}}</p>' +
-                 '<div class="votes">' +
-               	 '<button type="button" class="btn btn-default btn-sm" ng-click="likeComment(family.CommentId)">' +
-                 '<span class="glyphicon glyphicon-thumbs-up"></span> {{family.CommentId}}' +
+                 '<div class="votes" ng-if=loged>' +
+               	 '<button type="button" class="btn btn-default btn-sm" ng-click="likeComment(family.Forum,family.CommentId)">' +
+                 '<span class="glyphicon glyphicon-thumbs-up"></span> {{family.PositiveVotes}}' +
                  '</button>' +
-                 '<button type="button" class="btn btn-default btn-sm" ng-click="addRemoveDisLikes(theme.Title)">' +
-                 '<span class="glyphicon glyphicon-thumbs-down"></span> {{dislike}}' +
+                 '<button type="button" class="btn btn-default btn-sm" ng-click="disLikeComment(family.Forum,family.CommentId)">' +
+                 '<span class="glyphicon glyphicon-thumbs-down"></span> {{family.NegativeVotes}}' +
                  '</button>' +
                  '</div>' +
-                 '<i class="reply"  ng-click="reply(family.CommentId, family.Forum, family.Theme)">Reply</i>' +
-                 '<div class="form-group">' +
-                 '<textarea class="form-control" rows="2" id="comment" ng-model="content"></textarea>' +
+                 '<div ng-if=loged>' +
+	                 '<i class="reply"  ng-click="reply(family.CommentId, family.Forum, family.Theme)">Reply</i>' +
+	                 '<div class="form-group">' +
+	                 '<textarea class="form-control" rows="2" id="comment" ng-model="content"></textarea>' +
+	                 '</div>' +
                  '</div>' +
-
                  
                     '<br>' +
                     '<div  id="{{family.CommentId}}">' +
@@ -106,8 +107,12 @@ angular.module('App',['ngRoute','angAccordion','ngCookies','RecursionHelper'],fu
                         '</div>' +
                     '</div>' +
               '</div>',
-        controller : function ($scope,$http,$cookies) {
+        controller : function ($scope,$http,$cookies,$rootScope) {
         	$scope.content = "";
+        	
+        	
+        	//alert($rootScope.isLoged);
+        	$scope.loged = $rootScope.isLoged;
         	
         	$scope.reply = function (id, forum, theme) {
         		
@@ -137,8 +142,24 @@ angular.module('App',['ngRoute','angAccordion','ngCookies','RecursionHelper'],fu
         	    }
         	}
     		
-    		$scope.likeComment = function (commentId){
-    			alert(commentId);
+    		$scope.likeComment = function (forum,commentId){
+    			
+    			$http.post('/Forum/AddCommentLikeServlet',{userName : $cookies.get('username'), forum : forum, commentId : commentId})
+    			.then(function (success) {
+    				$scope.$emit('comment-updated', success.data);
+    			}, function () {
+    				
+    			});
+    		}
+    		
+            $scope.disLikeComment = function (forum,commentId){
+    			
+    			$http.post('/Forum/AddCommentDisLikeServlet',{userName : $cookies.get('username'), forum : forum, commentId : commentId})
+    			.then(function (success) {
+    				$scope.$emit('comment-updated', success.data);
+    			}, function () {
+    				
+    			});
     		}
         		
         },

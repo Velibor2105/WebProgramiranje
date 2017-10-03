@@ -85,9 +85,58 @@ public class CommentBL {
 	    return comments;
 	}
 	
-	public void AddCommentLike() {
+	public ArrayList<Comment> AddCommentLike(String userName, String forum, String commentId) {
 		
+		Comment comment = null;
+		
+		for (Comment c : comments) {
+			  Comment cmnt = Helpers.search(c, Integer.parseInt(commentId));
+				if(cmnt != null) {
+					comment = cmnt;
+				}
+			}
+		
+		if(comment.getDisLikes().contains(userName)) 
+			comment.getDisLikes().remove(userName);
+		
+		if(comment.getLikes().contains(userName)) 
+			comment.getLikes().remove(userName);
+		else	
+			comment.getLikes().add(userName); 
+		
+		comment.setPositiveVotes(comment.getLikes().size()); 
+		comment.setNegativeVotes(comment.getDisLikes().size());
+		
+		cr.AddComments(comments);
+		
+		return GetCommentsByForum(forum);
 	}
 	
+    public ArrayList<Comment> AddCommentDisLike(String userName, String forum, String commentId) {
+		
+		Comment comment = null;
+		
+		for (Comment c : comments) {
+			  Comment cmnt = Helpers.search(c, Integer.parseInt(commentId));
+				if(cmnt != null) {
+					comment = cmnt;
+				}
+		}
+		
+		if(comment.getLikes().contains(userName)) 
+			comment.getLikes().remove(userName);
+		
+		if(comment.getDisLikes().contains(userName)) 
+			comment.getDisLikes().remove(userName);
+		else	
+			comment.getDisLikes().add(userName); 
+		
+		comment.setPositiveVotes(comment.getLikes().size()); 
+		comment.setNegativeVotes(comment.getDisLikes().size());
+		
+		cr.AddComments(comments);
+		
+		return GetCommentsByForum(forum);
+	}
 	
 }

@@ -45,7 +45,7 @@
 		    <a ng-if="theme.Type == 'Link'" href="{{theme.Link}}">{{theme.Link}}</a>
 		</div> 
 	
-	 <div class="votes">
+	 <div class="votes" ng-if="log">
       	<button type="button" class="btn btn-default btn-sm" ng-click="addRemoveLikes(theme.Title)">
           <span class="glyphicon glyphicon-thumbs-up"></span> {{like}}
         </button>
@@ -56,14 +56,15 @@
 	
 	
 		<div class="comments">	
-	    <h4>Leave a Comment:</h4>
+		<div ng-if="log">
+	      <h4>Leave a Comment:</h4>
 	        <div class="form-group">
 	          <textarea class="form-control" rows="2"  ng-model="mainComment"></textarea>
 	        </div>
 	        <button type="submit" class="btn btn-success" ng-click="leaveMainComment(mainComment,theme.Title)">Submit</button>
 	      <br><br>
-	      
-	      <p><span class="badge">2</span> Comments:</p><br>
+	    </div>
+	      <p><!--<span class="badge">2</span>  --> Comments:</p><br>
 	      
 		    <div ng-controller="TreeController">
 		        <tree ng-repeat="t in treeFamily | filter: { Theme: theme.Title } " family="t"></tree>

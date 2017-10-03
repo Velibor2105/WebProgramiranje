@@ -4,6 +4,9 @@ angular.module('App')
  
 	
 	
+	$scope.log = $rootScope.isLoged;
+	
+	
 	$scope.refreshLikes = function (theme) {
 		
 	   themeFactory.getLikes(theme)

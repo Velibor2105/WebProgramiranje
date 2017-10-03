@@ -151,7 +151,7 @@
     <servlet-name>GetLikesServlet</servlet-name>
     <url-pattern>/GetLikesServlet</url-pattern>
   </servlet-mapping>
-    <servlet>
+  <servlet>
     <description></description>
     <display-name>GetDisLikesServlet</display-name>
     <servlet-name>GetDisLikesServlet</servlet-name>
@@ -161,4 +161,25 @@
     <servlet-name>GetDisLikesServlet</servlet-name>
     <url-pattern>/GetDisLikesServlet</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>AddCommentLikeServlet</display-name>
+    <servlet-name>AddCommentLikeServlet</servlet-name>
+    <servlet-class>com.servlets.AddCommentLikeServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AddCommentLikeServlet</servlet-name>
+    <url-pattern>/AddCommentLikeServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>AddCommentDisLikeServlet</display-name>
+    <servlet-name>AddCommentDisLikeServlet</servlet-name>
+    <servlet-class>com.servlets.AddCommentDisLikeServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AddCommentDisLikeServlet</servlet-name>
+    <url-pattern>/AddCommentDisLikeServlet</url-pattern>
+  </servlet-mapping>
+  
 </web-app>
