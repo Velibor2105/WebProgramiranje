@@ -182,7 +182,7 @@
     <url-pattern>/AddCommentDisLikeServlet</url-pattern>
   </servlet-mapping>
   <servlet>
-   <description></description>
+    <description></description>
     <display-name>DeleteCommentServlet</display-name>
     <servlet-name>DeleteCommentServlet</servlet-name>
     <servlet-class>com.servlets.DeleteCommentServlet</servlet-class>
@@ -190,5 +190,15 @@
   <servlet-mapping>
     <servlet-name>DeleteCommentServlet</servlet-name>
     <url-pattern>/DeleteCommentServlet</url-pattern>
+  </servlet-mapping>
+   <servlet>
+    <description></description>
+    <display-name>EditCommentServlet</display-name>
+    <servlet-name>EditCommentServlet</servlet-name>
+    <servlet-class>com.servlets.EditCommentServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>EditCommentServlet</servlet-name>
+    <url-pattern>/EditCommentServlet</url-pattern>
   </servlet-mapping>
 </web-app>

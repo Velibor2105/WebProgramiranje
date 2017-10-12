@@ -12,11 +12,22 @@ public class CommentBL {
 	private ArrayList<Comment> comments = null;
 	private CommentRepositiry cr = null;
 	
+	private ArrayList<Comment> DeleteComments(ArrayList<Comment> coms, int id){
+		
+		Comment c = GetCommentById(id);
+		coms.remove(c);
+		
+		for (Comment comment : coms) {
+			comment.getContain().remove(c);
+			this.DeleteComments(comment.getContain(), id);
+		}
+		return coms;
+	}
+	
 	public CommentBL(String path) {
 		cr = new CommentRepositiry(path);
 		this.comments = cr.GetComments();
 	}
-	
 	
 	public ArrayList<Comment> GetCommentsByForumAndTheme(String forum, String theme){
 		
@@ -48,7 +59,6 @@ public class CommentBL {
 		return null;
 	}
 	
-	
 	public boolean DeleteCommentById(int id) {
 		
 	    ArrayList<Comment> cc = DeleteComments(comments,id);
@@ -56,20 +66,6 @@ public class CommentBL {
 		return true;
 	
 	}
-	
-	private ArrayList<Comment> DeleteComments(ArrayList<Comment> coms, int id){
-		
-		Comment c = GetCommentById(id);
-		coms.remove(c);
-		
-		for (Comment comment : coms) {
-			comment.getContain().remove(c);
-			this.DeleteComments(comment.getContain(), id);
-		}
-		return coms;
-	}
-	
-	
 	
 	public boolean AddComment(int parentId, Comment c) {
 		
@@ -103,9 +99,25 @@ public class CommentBL {
 	   return max + 1;
 	}
 
-	
 	public ArrayList<Comment> GetComments(){
 	    return comments;
+	}
+	
+	public ArrayList<Comment> EditCommetnt(int id, String content, String forum) {
+		
+	Comment comment = null;
+		
+		for (Comment c : comments) {
+			  Comment cmnt = Helpers.search(c, id);
+				if(cmnt != null) {
+					comment = cmnt;
+				}
+		}
+		comment.setContent(content);
+		
+		cr.AddComments(comments);
+		
+		return GetCommentsByForum(forum);
 	}
 	
 	public ArrayList<Comment> AddCommentLike(String userName, String forum, String commentId) {

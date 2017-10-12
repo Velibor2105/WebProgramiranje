@@ -86,6 +86,7 @@ angular.module('App',['ngRoute','angAccordion','ngCookies','RecursionHelper'],fu
               '<h4>{{family.Author}} <small>{{family.DateOfCreation}}</small></h4>' +
                  '<p>{{family.Content}}</p>' +
                  '<div class="votes" ng-if=loged>' +
+                 '<textarea ng-show=isEditing style="margin-bottom : 5px;" class="form-control" rows="2" id="e{{family.CommentId}}">{{family.Content}}</textarea>' +
                	 '<button type="button" class="btn btn-default btn-sm" ng-click="likeComment(family.Forum,family.CommentId)">' +
                  '<span class="glyphicon glyphicon-thumbs-up"></span> {{family.PositiveVotes}}' +
                  '</button>' +
@@ -93,7 +94,14 @@ angular.module('App',['ngRoute','angAccordion','ngCookies','RecursionHelper'],fu
                  '<span class="glyphicon glyphicon-thumbs-down"></span> {{family.NegativeVotes}}' +
                  '</button>' +
                  '<button ng-if=canDelete type="button" class="btn btn-danger btn-sm" style="margin-left : 8px;" ng-click="deleteComment(family.CommentId,family.Forum)">' +
-                 'Delete comment' +
+                 'Delete' +
+                 '</button>' +
+                
+	                 '<button ng-if=canEdit ng-show=!isEditing  type="button" class="btn btn-warning btn-sm" style="margin-left : 8px;" ng-click="edit()">' +
+	                 'Edit' +
+	                 '<button  ng-show=isEditing type="button" class="btn btn-warning btn-sm" style="margin-left : 8px;" ng-click="save(family.CommentId,family.Forum)">' +
+	                 'Save edit' +
+                
                  '</button>' +
                  '</div>' +
                  '<div ng-if=loged>' +
@@ -114,11 +122,16 @@ angular.module('App',['ngRoute','angAccordion','ngCookies','RecursionHelper'],fu
         	
         	$scope.loged = $rootScope.isLoged;
         	$scope.canDelete = false;
+        	$scope.isEditing = false;
+            $scope.canEdit = false;
         	
         	var themeAuthor = $scope.family.ThemeAuthor;
         	
         	if($cookies.get('username') == $cookies.get('currentModerator') || $cookies.get('username') == themeAuthor || $cookies.get('role') == 'admin')
         		$scope.canDelete = true;
+        	
+        	if($cookies.get('username') == $cookies.get('currentModerator') || $cookies.get('username') == themeAuthor)
+        		$scope.canEdit = true;
         	
         	
         	
@@ -138,11 +151,27 @@ angular.module('App',['ngRoute','angAccordion','ngCookies','RecursionHelper'],fu
         	}
         	
         	
+        	$scope.edit = function () {
+        		$scope.isEditing = true;
+        	};
         	
+        	$scope.save = function (id,forum) {
+        		
+        		var content = $('#e' + id).val();
+        		
+        		$http.post('/Forum/EditCommentServlet',{id : id, forum : forum, content : content})
+    			.then(function (success) {
+    				$scope.$emit('comment-updated', success.data);
+    			}, function () {
+    				
+    			});
+        		
+        		
+        	};
         	
         	$scope.reply = function (id, forum, theme) {
         		
-        		var content = $('#'+ id +'').val();
+        		var content = $('#'+ id).val();
         		
         		if(content != ""){
         		$http.post('/Forum/AddNewCommentServlet', { parentId : id, theme : theme, forum : forum, author : $cookies.get('username'), content : content})
