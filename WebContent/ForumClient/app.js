@@ -92,6 +92,9 @@ angular.module('App',['ngRoute','angAccordion','ngCookies','RecursionHelper'],fu
                  '<button type="button" class="btn btn-default btn-sm" ng-click="disLikeComment(family.Forum,family.CommentId)">' +
                  '<span class="glyphicon glyphicon-thumbs-down"></span> {{family.NegativeVotes}}' +
                  '</button>' +
+                 '<button ng-if=canDelete type="button" class="btn btn-danger btn-sm" style="margin-left : 8px;" ng-click="deleteComment(family.CommentId,family.Forum)">' +
+                 'Delete comment' +
+                 '</button>' +
                  '</div>' +
                  '<div ng-if=loged>' +
 	                 '<i class="reply"  ng-click="reply(family.CommentId, family.Forum, family.Theme)">Reply</i>' +
@@ -110,9 +113,34 @@ angular.module('App',['ngRoute','angAccordion','ngCookies','RecursionHelper'],fu
         controller : function ($scope,$http,$cookies,$rootScope) {
         	
         	$scope.loged = $rootScope.isLoged;
+        	$scope.canDelete = false;
+        	
+        	var themeAuthor = $scope.family.ThemeAuthor;
+        	
+        	if($cookies.get('username') == $cookies.get('currentModerator') || $cookies.get('username') == themeAuthor || $cookies.get('role') == 'admin')
+        		$scope.canDelete = true;
+        	
+        	
+        	
+        	$scope.deleteComment = function(id, forum){
+        		$http.post('/Forum/DeleteCommentServlet', {id : id}).then(function (success) {
+        			
+        			var config = {
+        					params : {
+        						forum : forum
+        					}
+        			}
+        			$http.get('/Forum/GetCommentsForForumServlet', config)
+        			.then(function (success)  {
+        			    $scope.$emit('comment-updated', success.data);
+    				});
+        		});
+        	}
+        	
+        	
+        	
         	
         	$scope.reply = function (id, forum, theme) {
-        		
         		
         		var content = $('#'+ id +'').val();
         		

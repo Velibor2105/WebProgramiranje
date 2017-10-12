@@ -28,7 +28,9 @@ public class TestClass {
 		
 		CommentBL commentBl = new CommentBL("C:\\Users\\v.stancic\\Desktop\\faks\\web programiranje\\Forum\\.metadata\\.plugins\\org.eclipse.wst.server.core\\tmp0\\wtpwebapps\\Forum");
 		
-		ArrayList<Comment> comments = commentBl.AddCommentLike("admin", "Aelyria", "2");
+		boolean d = commentBl.DeleteCommentById(4);
+		
+		
 		
 		
 		ArrayList<String> test = new ArrayList<String>();

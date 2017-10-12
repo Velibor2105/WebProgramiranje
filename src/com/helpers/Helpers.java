@@ -39,6 +39,7 @@ public class Helpers {
 	    return null;
 	}
 	
+	
 	public static ArrayList<Integer> GetMax(ArrayList<Comment> comments, ArrayList<Integer> listOfInteger) {
 	    for (Comment c : comments) {
 	    	listOfInteger.add(c.getCommentId());

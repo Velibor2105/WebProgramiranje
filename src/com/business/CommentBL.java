@@ -39,16 +39,39 @@ public class CommentBL {
 	}
 	
 	public Comment GetCommentById(int id){
-		for (Comment comment : comments) {
-			if(comment.getCommentId() == id)
-				return comment;
+		for (Comment c : comments) {
+			  Comment cmnt = Helpers.search(c, id);
+				if(cmnt != null) {
+					return cmnt;
+				}
 		}
 		return null;
 	}
 	
-	public boolean AddComment(int parentId, Comment c) {
+	
+	public boolean DeleteCommentById(int id) {
 		
-		Comment cmt = GetCommentById(parentId);
+	    ArrayList<Comment> cc = DeleteComments(comments,id);
+	    cr.AddComments(cc);
+		return true;
+	
+	}
+	
+	private ArrayList<Comment> DeleteComments(ArrayList<Comment> coms, int id){
+		
+		Comment c = GetCommentById(id);
+		coms.remove(c);
+		
+		for (Comment comment : coms) {
+			comment.getContain().remove(c);
+			this.DeleteComments(comment.getContain(), id);
+		}
+		return coms;
+	}
+	
+	
+	
+	public boolean AddComment(int parentId, Comment c) {
 		
 		if(parentId == 0) {
 			cr.AddComment(c);
