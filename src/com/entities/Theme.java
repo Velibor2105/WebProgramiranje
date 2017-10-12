@@ -6,17 +6,15 @@ import java.io.Serializable;
 
 public class Theme implements Serializable {
 	
-	/**
-	 * 
-	 */
+
 	private static final long serialVersionUID = 1L;
 	private String ParentForum;
 	private String Title;
 	private String Type;
 	private String Author;
 	private String Content;
-	private ArrayList<String> Likes; //ovo ce biti novi entitet
-	private ArrayList<String> DisLikes; //ovo ce biti novi entitet
+	private ArrayList<String> Likes; 
+	private ArrayList<String> DisLikes; 
 	private Date DateOfCreation; 
 	private int PositiveVotes;
 	private int NegativeVotes;

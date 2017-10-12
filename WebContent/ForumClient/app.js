@@ -96,7 +96,7 @@ angular.module('App',['ngRoute','angAccordion','ngCookies','RecursionHelper'],fu
                  '<div ng-if=loged>' +
 	                 '<i class="reply"  ng-click="reply(family.CommentId, family.Forum, family.Theme)">Reply</i>' +
 	                 '<div class="form-group">' +
-	                 '<textarea class="form-control" rows="2" id="comment" ng-model="content"></textarea>' +
+	                 '<textarea class="form-control" rows="2" id="{{family.CommentId}}" ng-model="content"></textarea>' +
 	                 '</div>' +
                  '</div>' +
                  
@@ -108,16 +108,16 @@ angular.module('App',['ngRoute','angAccordion','ngCookies','RecursionHelper'],fu
                     '</div>' +
               '</div>',
         controller : function ($scope,$http,$cookies,$rootScope) {
-        	$scope.content = "";
         	
-        	
-        	//alert($rootScope.isLoged);
         	$scope.loged = $rootScope.isLoged;
         	
         	$scope.reply = function (id, forum, theme) {
         		
-        		if($scope.content != ""){
-        		$http.post('/Forum/AddNewCommentServlet', { parentId : id, theme : theme, forum : forum, author : $cookies.get('username'), content : $scope.content})
+        		
+        		var content = $('#'+ id +'').val();
+        		
+        		if(content != ""){
+        		$http.post('/Forum/AddNewCommentServlet', { parentId : id, theme : theme, forum : forum, author : $cookies.get('username'), content : content})
         		.then(function (success) {
         			if(success.data == 'Success'){
         				var config = {

@@ -29,13 +29,16 @@ angular.module('App')
 	themeFactory.getThemeForForum($cookies.get('currentForum'))
 	.then(function (response) {
 			$scope.themes = response.data;
+			$scope.moderator = $cookies.get('currentModerator');
 	}, function (error) {
 		
 	});
 	
 	
 	
-	$scope.getThemeForForums = function (name) {
+	$scope.getThemeForForums = function (name,moderator) {
+			$cookies.put('currentModerator', moderator);
+			
 		    $cookies.remove('currentForum');
 		    $cookies.put('currentForum', name);
 			$location.path( "/themes" );

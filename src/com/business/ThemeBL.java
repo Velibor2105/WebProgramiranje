@@ -27,6 +27,15 @@ public class ThemeBL {
 		return false;
 	}
 	
+	public String GetAuthorForTheme(String theme) {
+		
+		for (Theme t : themes) 
+			if (t.getTitle().equals(theme)) 
+				return t.getAuthor();
+			
+		return null;
+	}
+	
 	public ArrayList<Theme> GetThemesForForumName(String name) {
 		
 		ArrayList<Theme> forumThemes = new ArrayList<Theme>();

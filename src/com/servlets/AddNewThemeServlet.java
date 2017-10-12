@@ -35,6 +35,7 @@ public class AddNewThemeServlet extends HttpServlet {
 		String base64 = request.getParameter("bitArray");
 		String link = request.getParameter("link");
 		
+		
 		String path = getServletContext().getRealPath("");
 		
 		ThemeBL themeBL = new ThemeBL(path);

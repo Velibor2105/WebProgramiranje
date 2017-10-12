@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.business.CommentBL;
+import com.business.ThemeBL;
 import com.entities.Comment;
 
 public class AddNewCommentServlet extends HttpServlet {
@@ -32,11 +33,12 @@ public class AddNewCommentServlet extends HttpServlet {
 		String content = request.getParameter("content");
 		String parentId = request.getParameter("parentId");
 		
+		ThemeBL themeBl = new ThemeBL(path);
 		CommentBL commentBl = new CommentBL(path);
 		ArrayList<String> likes = new ArrayList<String>();
 		ArrayList<String> disLikes = new ArrayList<String>();
 		
-		Comment comment = new Comment(forum, theme, author, commentBl.GenerateNextCommentId(), new Date(), content, 0, 0, false, new ArrayList<Comment>(),likes,disLikes);
+		Comment comment = new Comment(forum, theme, author, commentBl.GenerateNextCommentId(), new Date(), content, 0, 0, false, new ArrayList<Comment>(),likes,disLikes,themeBl.GetAuthorForTheme(theme));
 		
 		String resp = null;
 		boolean res = commentBl.AddComment(Integer.parseInt(parentId), comment);

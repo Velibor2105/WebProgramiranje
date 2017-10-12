@@ -42,7 +42,9 @@
 		    <p ng-if="theme.Type == 'Text'">
 		    	{{theme.Content}}
 		    </p>
-		    <a ng-if="theme.Type == 'Link'" href="{{theme.Link}}">{{theme.Link}}</a>
+		    <a ng-if="theme.Type == 'Link'" href="{{theme.Link}}">{{theme.Link}}</a><br><br><br>
+		    Author: {{theme.Author}}<br>
+		    Moderator: {{moderator}}
 		</div> 
 	
 	 <div class="votes" ng-if="log">

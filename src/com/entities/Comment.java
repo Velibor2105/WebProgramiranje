@@ -21,10 +21,11 @@ public class Comment implements Serializable {
 	private ArrayList<Comment> Contain;
 	private ArrayList<String> likes;
 	private ArrayList<String> disLikes;
+	private String ThemeAuthor;
 	
 	public Comment(String forum, String theme, String author, int commentId, Date dateOfCreation, String content,
 			int positiveVotes, int negativeVotes, boolean changed, ArrayList<Comment> contain, ArrayList<String> likes,
-			ArrayList<String> disLikes) {
+			ArrayList<String> disLikes, String themeAuthor) {
 		super();
 		Forum = forum;
 		Theme = theme;
@@ -38,9 +39,18 @@ public class Comment implements Serializable {
 		Contain = contain;
 		this.likes = likes;
 		this.disLikes = disLikes;
+		ThemeAuthor = themeAuthor;
 	}
-	
 
+
+
+	public String getThemeAuthor() {
+		return ThemeAuthor;
+	}
+
+	public void setThemeAuthor(String themeAuthor) {
+		ThemeAuthor = themeAuthor;
+	}
 
 	public String getForum() {
 		return Forum;
