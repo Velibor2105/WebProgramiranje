@@ -4,6 +4,11 @@ angular.module('App')
 	
 	$scope.log = $rootScope.isLoged;
 	$scope.isEdit = false;
+	$scope.crudAccess = false;
+	$scope.username = $cookies.get('username');
+	
+	if($cookies.get('username') == $cookies.get('currentModerator') || $cookies.get('role') == 'admin')
+		$scope.crudAccess = true;
 	
 	
 	$scope.edit = function () {

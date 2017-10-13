@@ -48,7 +48,7 @@
 		    Moderator: {{moderator}}
 		</div> 
 	
-	 <div class="votes" ng-if="log">
+	 <div class="votes" ng-if="log && (crudAccess || theme.Author == username)">
       	<button type="button" class="btn btn-default btn-sm" ng-click="addRemoveLikes(theme.Title)">
           <span class="glyphicon glyphicon-thumbs-up"></span> {{like}}
         </button>
