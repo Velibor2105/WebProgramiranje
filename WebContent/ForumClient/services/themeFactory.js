@@ -11,11 +11,7 @@ angular.module('App')
 			.success(function (response) {
 				alert(response);
 				$window.location.reload();
-			})
-			.error(function (error) {
-				alert(error);
 			});
-			
 		},
 		
 		getThemeForForum : function (name) {

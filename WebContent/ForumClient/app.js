@@ -162,11 +162,7 @@ angular.module('App',['ngRoute','angAccordion','ngCookies','RecursionHelper'],fu
         		$http.post('/Forum/EditCommentServlet',{id : id, forum : forum, content : content})
     			.then(function (success) {
     				$scope.$emit('comment-updated', success.data);
-    			}, function () {
-    				
     			});
-        		
-        		
         	};
         	
         	$scope.reply = function (id, forum, theme) {
@@ -177,25 +173,15 @@ angular.module('App',['ngRoute','angAccordion','ngCookies','RecursionHelper'],fu
         		$http.post('/Forum/AddNewCommentServlet', { parentId : id, theme : theme, forum : forum, author : $cookies.get('username'), content : content})
         		.then(function (success) {
         			if(success.data == 'Success'){
-        				var config = {
-            					params : {
-            						forum : forum
-            					}
-            			}
+        				
+        				var config = { params : { forum : forum} }
+        				
         				$http.get('/Forum/GetCommentsForForumServlet', config)
             			.then(function (success)  {
             			    $scope.$emit('comment-updated', success.data);
-        				},
-        			    function (error) {
-        					
         				});
-        				
         			}
-        				
-        		}, function () {
-        			
         		});
-        		
         	    }
         	}
     		
@@ -204,8 +190,6 @@ angular.module('App',['ngRoute','angAccordion','ngCookies','RecursionHelper'],fu
     			$http.post('/Forum/AddCommentLikeServlet',{userName : $cookies.get('username'), forum : forum, commentId : commentId})
     			.then(function (success) {
     				$scope.$emit('comment-updated', success.data);
-    			}, function () {
-    				
     			});
     		}
     		
@@ -214,19 +198,12 @@ angular.module('App',['ngRoute','angAccordion','ngCookies','RecursionHelper'],fu
     			$http.post('/Forum/AddCommentDisLikeServlet',{userName : $cookies.get('username'), forum : forum, commentId : commentId})
     			.then(function (success) {
     				$scope.$emit('comment-updated', success.data);
-    			}, function () {
-    				
     			});
     		}
-        		
         },
         compile: function(element) {
             return RecursionHelper.compile(element, function(scope, iElement, iAttrs, controller, transcludeFn){
-               
-           
-            	
-            	
-            });
+        });
         }
     };
   })
@@ -242,16 +219,11 @@ angular.module('App',['ngRoute','angAccordion','ngCookies','RecursionHelper'],fu
 		$rootScope.isUser = 'true';
 	
 	 $rootScope.$on("$locationChangeStart", function(event, next, current) { 
-	     //   if($cookies.get('role') == null)
-	      //  	$location.path( "/" );
 		 	if(next == "http://localhost:8080/Forum/#/themes")
 	        	$location.path( "/themes" );
 	        if(next == "http://localhost:8080/Forum/#/users" && $cookies.get('role') != 'admin')
 	        	$location.path( "/" );
 	        if(next == "http://localhost:8080/Forum/#/new-forum" && $cookies.get('role') != 'admin' && next == "http://localhost:8080/Forum/#/new-forum" && $cookies.get('role') != 'moderator')
 	        	$location.path( "/" );
-	        	
-	        	
 	    });
-
 });

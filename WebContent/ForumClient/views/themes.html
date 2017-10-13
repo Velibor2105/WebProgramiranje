@@ -42,7 +42,8 @@
 		    <p ng-if="theme.Type == 'Text'">
 		    	{{theme.Content}}
 		    </p>
-		    <a ng-if="theme.Type == 'Link'" href="{{theme.Link}}">{{theme.Link}}</a><br><br><br>
+		    <a ng-if="theme.Type == 'Link'" href="{{theme.Link}}">{{theme.Link}}</a><br>
+		    <textarea ng-if="theme.Type == 'Text' && isEdit" class="form-control" rows="7" data-theme="{{theme.Title}}">{{theme.Content}}</textarea><br><br>
 		    Author: {{theme.Author}}<br>
 		    Moderator: {{moderator}}
 		</div> 
@@ -53,6 +54,15 @@
         </button>
         <button type="button" class="btn btn-default btn-sm" ng-click="addRemoveDisLikes(theme.Title)">
           <span class="glyphicon glyphicon-thumbs-down"></span> {{dislike}}
+        </button>
+        <button type="button" class="btn btn-danger btn-sm" ng-click="deleteTheme(theme.Title, theme.ParentForum)">
+           Delete
+        </button>
+        <button ng-if=!isEdit type="button" class="btn btn-warning btn-sm" ng-click="edit()">
+           Edit
+        </button>
+        <button ng-if=isEdit type="button" class="btn btn-warning btn-sm" ng-click="save(theme.Title, theme.ParentForum)">
+          Save
         </button>
       </div>
 	

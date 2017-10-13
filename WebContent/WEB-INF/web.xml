@@ -191,7 +191,7 @@
     <servlet-name>DeleteCommentServlet</servlet-name>
     <url-pattern>/DeleteCommentServlet</url-pattern>
   </servlet-mapping>
-   <servlet>
+  <servlet>
     <description></description>
     <display-name>EditCommentServlet</display-name>
     <servlet-name>EditCommentServlet</servlet-name>
@@ -200,5 +200,25 @@
   <servlet-mapping>
     <servlet-name>EditCommentServlet</servlet-name>
     <url-pattern>/EditCommentServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>EditThemeTextServlet</display-name>
+    <servlet-name>EditThemeTextServlet</servlet-name>
+    <servlet-class>com.servlets.EditThemeTextServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>EditThemeTextServlet</servlet-name>
+    <url-pattern>/EditThemeTextServlet</url-pattern>
+  </servlet-mapping>
+    <servlet>
+    <description></description>
+    <display-name>DeleteThemeServlet</display-name>
+    <servlet-name>DeleteThemeServlet</servlet-name>
+    <servlet-class>com.servlets.DeleteThemeServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>DeleteThemeServlet</servlet-name>
+    <url-pattern>/DeleteThemeServlet</url-pattern>
   </servlet-mapping>
 </web-app>

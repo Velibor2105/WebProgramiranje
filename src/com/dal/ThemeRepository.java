@@ -71,6 +71,29 @@ public class ThemeRepository {
 		return true;
 	}
 	
+	public boolean AddThemes(ArrayList<Theme> themes) {
+		
+		ObjectOutputStream oos = null;
+		FileOutputStream fout = null;
+		try 
+		{
+		    fout = new FileOutputStream(this.path + "\\data\\themes.txt");
+		    oos = new ObjectOutputStream(fout);
+			oos.writeObject(this.themes);
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}finally {
+		    if(oos  != null){
+		        try {
+					oos.close();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+		    } 
+		}
+		return true;
+	}
+	
 	
 	public ArrayList<Theme> GetThemes(){
 		return themes;

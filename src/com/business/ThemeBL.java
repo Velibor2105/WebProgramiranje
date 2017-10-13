@@ -10,13 +10,19 @@ public class ThemeBL {
 	private ArrayList<Theme> themes = null;
 	private ThemeRepository tr = null;
 	
-	public ThemeBL(){
-		
-	}
 	
 	public ThemeBL(String path){
 		tr = new ThemeRepository(path);
 		themes = tr.GetThemes();
+	}
+	
+	private boolean ThemeExistInForum(String name, String title) {
+
+		for (Theme theme : GetThemesForForumName(name)) {
+			if(theme.getTitle().equals(title))
+				return true;
+		}
+		return false;
 	}
 	
 	public boolean AddTheme(Theme theme) {
@@ -36,6 +42,41 @@ public class ThemeBL {
 		return null;
 	}
 	
+	public ArrayList<Theme> DeleteTheme(String theme, String forum){
+		tr.DeleteThemeById(theme);
+		return GetThemesForForumName(forum);
+	}
+	
+	public ArrayList<Theme> EditThemeText(String theme, String forum, String content) {
+		
+		for (Theme t : themes) {
+			if(t.getTitle().equals(theme) && t.getParentForum().equals(forum)) 
+				t.setContent(content);
+		}
+		tr.AddThemes(themes);
+		return GetThemesForForumName(forum);
+	}
+	
+	public ArrayList<Theme> EditThemeLink(String theme, String forum, String link) {
+		
+		for (Theme t : themes) {
+			if(t.getTitle().equals(theme) && t.getParentForum().equals(forum)) 
+				t.setLink(link);
+		}
+		tr.AddThemes(themes);
+		return GetThemesForForumName(forum);
+	}
+	
+	public ArrayList<Theme> EditThemeImage(String theme, String forum, String base64) {
+		
+		for (Theme t : themes) {
+			if(t.getTitle().equals(theme) && t.getParentForum().equals(forum)) 
+				t.setBase64(base64);
+		}
+		tr.AddThemes(themes);
+		return GetThemesForForumName(forum);
+	}
+	
 	public ArrayList<Theme> GetThemesForForumName(String name) {
 		
 		ArrayList<Theme> forumThemes = new ArrayList<Theme>();
@@ -46,15 +87,7 @@ public class ThemeBL {
 		}
 		return forumThemes;
 	}
-	
-	private boolean ThemeExistInForum(String name, String title) {
 
-		for (Theme theme : GetThemesForForumName(name)) {
-			if(theme.getTitle().equals(title))
-				return true;
-		}
-		return false;
-	}
 	
 	public int AddRemoveLike(String userName, String themeTitle) {
 		
