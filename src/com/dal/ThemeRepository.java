@@ -8,7 +8,6 @@ import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 
 import com.entities.Theme;
-import com.entities.User;
 
 public class ThemeRepository {
 

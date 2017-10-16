@@ -211,7 +211,7 @@
     <servlet-name>EditThemeTextServlet</servlet-name>
     <url-pattern>/EditThemeTextServlet</url-pattern>
   </servlet-mapping>
-    <servlet>
+  <servlet>
     <description></description>
     <display-name>DeleteThemeServlet</display-name>
     <servlet-name>DeleteThemeServlet</servlet-name>
@@ -220,5 +220,15 @@
   <servlet-mapping>
     <servlet-name>DeleteThemeServlet</servlet-name>
     <url-pattern>/DeleteThemeServlet</url-pattern>
+  </servlet-mapping>
+<servlet>
+    <description></description>
+    <display-name>DeleteForumServlet</display-name>
+    <servlet-name>DeleteForumServlet</servlet-name>
+    <servlet-class>com.servlets.DeleteForumServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>DeleteForumServlet</servlet-name>
+    <url-pattern>/DeleteForumServlet</url-pattern>
   </servlet-mapping>
 </web-app>

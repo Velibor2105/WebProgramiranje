@@ -17,6 +17,7 @@
 		</ul>
 		<div ng-controller="RenderThemesCtrl">
 			<button type="button" class="btn btn-success" ng-click="getThemeForForums(forum.Name,forum.Moderator)">Visit {{forum.Name}} forum</button>
+			<button ng-if=crudAccess style="margin-left : 50px" type="button" class="btn btn-danger" ng-click="deleteForum(forum.Name)">Delete {{forum.Name}}</button>
 		</div>  
         <h4 class="moderator-italic">Moderator: <span style="font-style: italic;">{{forum.Moderator}}</span></h4>
         

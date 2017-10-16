@@ -11,6 +11,12 @@ angular.module('App')
 		$scope.crudAccess = true;
 	
 	
+	
+	
+	$scope.deleteForum = function(forum){
+		forumFactory.deleteForumByName(forum);
+	}
+	
 	$scope.edit = function () {
 		$scope.isEdit = true;
 	}

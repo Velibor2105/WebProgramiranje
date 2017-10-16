@@ -29,6 +29,13 @@ angular.module('App')
 			
 		   return $http.get('/Forum/GetAllForumsServlet');
 		   
+		},
+		
+		deleteForumByName : function (forumName) {
+			$http.post('/Forum/DeleteForumServlet', {forum : forumName})
+			.then(function (success) {
+				$window.location.reload();
+			})
 		}
 		
 		

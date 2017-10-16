@@ -22,6 +22,10 @@ public class ForumBL {
 		return "Forum alredy exist!";
 	}
 	
+	public void DeleteForumByName(String name) {
+		fr.DeleteForumByNama(name);
+	}
+	
 	public ArrayList<Forum> GetForums(){
 	    return forums;
 	}

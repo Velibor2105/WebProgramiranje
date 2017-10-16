@@ -80,13 +80,32 @@ public class ForumRepository {
         return null;
 	}
 	
-	public static void UpdateUserById(String id){
+	public void DeleteForumByNama(String name) {
+		for (int i = 0; i < forums.size(); i++) {
+			if(forums.get(i).getName().equals(name))
+				forums.remove(i);
+		}
 		
+		ObjectOutputStream oos = null;
+		FileOutputStream fout = null;
+		try 
+		{
+		    fout = new FileOutputStream(this.path + "\\data\\forums.txt");
+		    oos = new ObjectOutputStream(fout);
+			oos.writeObject(this.forums);
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}finally {
+		    if(oos  != null){
+		        try {
+					oos.close();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+		    } 
+		}
 	}
-	public static void DeleteUserById(String id){
-		
-	}
-
+	
 	public ArrayList<Forum> GetForums() {
 		return forums;
 	}
