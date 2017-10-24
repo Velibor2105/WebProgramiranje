@@ -6,9 +6,11 @@ import java.util.Date;
 import java.util.Iterator;
 
 import com.business.CommentBL;
+import com.business.MessageBL;
 import com.business.ThemeBL;
 import com.dal.CommentRepositiry;
 import com.dal.ForumRepository;
+import com.dal.MessageRepository;
 import com.dal.ThemeRepository;
 import com.dal.UserRepository;
 import com.entities.Comment;
@@ -21,15 +23,16 @@ public class TestClass {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		
+		MessageRepository mr = new MessageRepository("C:\\Users\\v.stancic\\Desktop\\faks\\web programiranje\\Forum\\.metadata\\.plugins\\org.eclipse.wst.server.core\\tmp0\\wtpwebapps\\Forum");
+		
+		MessageBL bml = new MessageBL("C:\\Users\\v.stancic\\Desktop\\faks\\web programiranje\\Forum\\.metadata\\.plugins\\org.eclipse.wst.server.core\\tmp0\\wtpwebapps\\Forum");
+		
+		bml.AddMessage("Neko", "Nesto", "Text poruke");
 		
 		
 		
-		CommentRepositiry cr = new CommentRepositiry("C:\\Users\\v.stancic\\Desktop\\faks\\web programiranje\\Forum\\.metadata\\.plugins\\org.eclipse.wst.server.core\\tmp0\\wtpwebapps\\Forum");
-		
-		CommentBL commentBl = new CommentBL("C:\\Users\\v.stancic\\Desktop\\faks\\web programiranje\\Forum\\.metadata\\.plugins\\org.eclipse.wst.server.core\\tmp0\\wtpwebapps\\Forum");
-		
-		boolean d = commentBl.DeleteCommentById(4);
-		
+
+		int count = mr.GetMessages().size();
 		
 		
 		
