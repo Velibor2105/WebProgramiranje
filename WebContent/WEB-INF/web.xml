@@ -241,4 +241,14 @@
     <servlet-name>SendMessageServlet</servlet-name>
     <url-pattern>/SendMessageServlet</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>GetMessagesServlet</display-name>
+    <servlet-name>GetMessagesServlet</servlet-name>
+    <servlet-class>com.servlets.GetMessagesServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>GetMessagesServlet</servlet-name>
+    <url-pattern>/GetMessagesServlet</url-pattern>
+  </servlet-mapping>
 </web-app>

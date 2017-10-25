@@ -24,4 +24,15 @@ public class MessageBL {
 		
 	}
 	
+	public ArrayList<Message> GetMessagesForReceiver(String name){
+		
+		ArrayList<Message> retVal = new ArrayList<Message>();
+		
+		for (Message message : messages) {
+			if(message.getReciver().equals(name))
+				retVal.add(message);
+		}
+		return retVal;
+	}
+
 }

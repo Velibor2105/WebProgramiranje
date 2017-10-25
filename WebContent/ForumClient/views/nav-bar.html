@@ -14,6 +14,7 @@
 				<li ng-if="isAdmin" ng-click="changeState('users')" class="{{userClass}}"><a href="#/users">Edit users</a></li>
 				<li ng-if="isAdmin || isModerator" ng-click="changeState('new-forum')" class="{{newForumClass}}"><a href="#/new-forum">New forum</a></li>
 				<li ng-if="isAdmin || isModerator || isUser " ng-click="changeState('new-theme')" class="{{newThemeClass}}"><a href="#/new-theme">New theme</a></li>
+				<li ng-if="isAdmin || isModerator || isUser " ng-click="changeState('user-page')" class="{{userPageClass}}"><a href="#/user-page">User page</a></li>
 			</ul>
 			<ul class="nav navbar-nav navbar-right">
 				<li ng-if="!isAdmin && !isUser && !isModerator"><a data-toggle="modal" data-target="#logModal"><span

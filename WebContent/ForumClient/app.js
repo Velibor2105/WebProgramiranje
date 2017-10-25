@@ -62,6 +62,10 @@ angular.module('App',['ngRoute','angAccordion','ngCookies','RecursionHelper'],fu
         templateUrl : "ForumClient/views/new-theme.html",
         activelink: 'new-theme'
     })
+    .when("/user-page", {
+        templateUrl : "ForumClient/views/user-page.html",
+        activelink: 'user-page'
+    })
     .when("/themes", {
         templateUrl : "ForumClient/views/themes.html",
         activelink: 'themes'
@@ -224,6 +228,12 @@ angular.module('App',['ngRoute','angAccordion','ngCookies','RecursionHelper'],fu
 	        if(next == "http://localhost:8080/Forum/#/users" && $cookies.get('role') != 'admin')
 	        	$location.path( "/" );
 	        if(next == "http://localhost:8080/Forum/#/new-forum" && $cookies.get('role') != 'admin' && next == "http://localhost:8080/Forum/#/new-forum" && $cookies.get('role') != 'moderator')
+	        	$location.path( "/" );
+	        if(next == "http://localhost:8080/Forum/#/new-theme" && $cookies.get('role') != 'admin' && next == "http://localhost:8080/Forum/#/new-theme" && $cookies.get('role') != 'moderator'
+	        	         && next == "http://localhost:8080/Forum/#/new-theme" && $cookies.get('role') != 'user')
+	        	$location.path( "/" );
+	        if(next == "http://localhost:8080/Forum/#/user-page" && $cookies.get('role') != 'admin' && next == "http://localhost:8080/Forum/#/user-page" && $cookies.get('role') != 'moderator'
+	        	&& next == "http://localhost:8080/Forum/#/user-page" && $cookies.get('role') != 'user')
 	        	$location.path( "/" );
 	    });
 });

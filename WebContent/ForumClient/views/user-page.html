@@ -1,0 +1,27 @@
+<div class="panel panel-default" style="margin-left : 400px; margin-right : 400px;" ng-controller="UserPageCtrl">
+  <div class="panel-heading">Panel Heading</div>
+  <div class="panel-body">
+
+	 <ang-accordion class="accordion" one-at-a-time="true" icon-position="right" close-icon-class="fa fa-chevron-right accordion-container" open-icon-class="fa fa-chevron-down">
+
+      <collapsible-item  ng-repeat="message in messages" item-title="From: {{message.Sender}}">
+        
+        From: 
+        <p>
+          {{message.Sender}}
+        </p>
+        
+        
+        Message:
+        <p>
+          {{message.Body}}
+        </p>
+     
+        
+     </collapsible-item>
+
+    </ang-accordion>
+
+
+  </div>
+</div>
