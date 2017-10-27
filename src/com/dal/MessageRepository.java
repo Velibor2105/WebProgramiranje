@@ -19,7 +19,7 @@ public class MessageRepository {
 	
 
 	public MessageRepository(String path) {
-		this.path = path;
+		this.path = "C:\\";
 		this.messages = GetAllMessages();
 	}
 	
@@ -31,7 +31,7 @@ public class MessageRepository {
 		FileInputStream fin = null;
 		ObjectInputStream ois = null;
 		try {
-			 fin = new FileInputStream(this.path + "\\data\\messages.txt");
+			 fin = new FileInputStream(this.path + "data\\messages.txt");
 			 ois = new ObjectInputStream(fin);
 			 messagesIn = (ArrayList<Message>) ois.readObject();
 		} catch (Exception e) {
@@ -55,7 +55,7 @@ public class MessageRepository {
 		this.messages.add(message);
 		try 
 		{
-		    fout = new FileOutputStream(this.path + "\\data\\messages.txt");
+		    fout = new FileOutputStream(this.path + "data\\messages.txt");
 		    oos = new ObjectOutputStream(fout);
 			oos.writeObject(this.messages);
 		} catch (Exception e) {

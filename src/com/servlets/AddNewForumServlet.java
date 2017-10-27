@@ -33,11 +33,12 @@ public class AddNewForumServlet extends HttpServlet {
 		String rules = request.getParameter("rules");
 		String moderator = request.getParameter("moderator");
 		String moderators = request.getParameter("moderators");
+		String icon = request.getParameter("icon");
 	    ArrayList<String> listModerators = Helpers.convertStringToArrayList(moderators);
 	    
 	    ForumBL forumBL = new ForumBL(path);
 	    
-	    Forum forum = new Forum(name,description,rules,moderator,listModerators);
+	    Forum forum = new Forum(name,description,rules,moderator,listModerators,icon);
 	    
 	    response.getWriter().write(forumBL.AddForum(forum));   
 		

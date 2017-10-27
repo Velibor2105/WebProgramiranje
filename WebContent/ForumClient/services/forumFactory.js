@@ -11,7 +11,8 @@ angular.module('App')
 				description : data.data.description,
 				moderator : data.moderator,
 				rules : data.data.rules,
-				moderators : JSON.stringify(data.moderators)
+				moderators : JSON.stringify(data.moderators),
+				icon : data.icon
 	     	})
 			.then(function (response) {
 				if(response.data == "Forum alredy exist!")

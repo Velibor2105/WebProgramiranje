@@ -1,7 +1,7 @@
  <div ng-controller="ForumCtrl" style="margin-right : 300px; margin-left : 300px;">
     <ang-accordion class="accordion" one-at-a-time="true" icon-position="right" close-icon-class="fa fa-chevron-right accordion-container" open-icon-class="fa fa-chevron-down">
 
-      <collapsible-item  ng-repeat="forum in forums" item-title="{{forum.Name}}">
+      <collapsible-item  ng-repeat="forum in forums" item-title="{{forum.Name}}" item-icon="{{forum.Icon}}">
         <h3>Description</h3>
         <p>
           {{forum.Description}}

@@ -16,7 +16,7 @@ public class ThemeRepository {
 	
 
 	public ThemeRepository(String path) {
-		this.path = path;
+		this.path = "C:\\";
 		this.themes = GetAllThemes();
 	}
 
@@ -29,7 +29,7 @@ public class ThemeRepository {
 		FileInputStream fin = null;
 		ObjectInputStream ois = null;
 		try {
-			 fin = new FileInputStream(this.path + "\\data\\themes.txt");
+			 fin = new FileInputStream(this.path + "data\\themes.txt");
 			 ois = new ObjectInputStream(fin);
 			 themesIn = (ArrayList<Theme>) ois.readObject();
 		} catch (Exception e) {
@@ -53,7 +53,7 @@ public class ThemeRepository {
 		this.themes.add(theme);
 		try 
 		{
-		    fout = new FileOutputStream(this.path + "\\data\\themes.txt");
+		    fout = new FileOutputStream(this.path + "data\\themes.txt");
 		    oos = new ObjectOutputStream(fout);
 			oos.writeObject(this.themes);
 		} catch (Exception e) {
@@ -76,7 +76,7 @@ public class ThemeRepository {
 		FileOutputStream fout = null;
 		try 
 		{
-		    fout = new FileOutputStream(this.path + "\\data\\themes.txt");
+		    fout = new FileOutputStream(this.path + "data\\themes.txt");
 		    oos = new ObjectOutputStream(fout);
 			oos.writeObject(this.themes);
 		} catch (Exception e) {
@@ -128,7 +128,7 @@ public class ThemeRepository {
 	
 		try 
 		{
-		    fout = new FileOutputStream(this.path + "\\data\\themes.txt");
+		    fout = new FileOutputStream(this.path + "data\\themes.txt");
 		    oos = new ObjectOutputStream(fout);
 			oos.writeObject(themes);
 		} catch (Exception e) {

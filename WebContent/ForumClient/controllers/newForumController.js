@@ -22,10 +22,25 @@ angular.module('App')
 	    var sendingData = {
 	    		data : data,
 	    		moderator : $cookies.get('username'),
-	    		moderators : selectedModerators
+	    		moderators : selectedModerators,
+	    		icon :  $scope.pngBitArray
 	    };
 	    
 	    forumFactory.addNewForum(sendingData);
 	}
+	
+	
+	   $scope.getBase64 = function (nesto) {
+			  
+		    var file = document.querySelector('input[type=file]').files[0];
+		    var reader = new FileReader();
+		    
+		    reader.addEventListener("load", function () {
+		        $scope.pngBitArray = reader.result;
+		    }, false);
+		    if (file) {
+		       reader.readAsDataURL(file);
+		    }
+	     }
 	
 }]);

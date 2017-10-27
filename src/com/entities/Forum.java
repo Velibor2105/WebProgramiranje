@@ -9,21 +9,33 @@ public class Forum implements java.io.Serializable{
 	private String Moderator;
 	private String Rules;
 	private ArrayList<String> Moderators; 
+	private String Icon;
 	
 	public Forum() {
 		
 	}
 	
 	
-	public Forum(String name, String description,String rules, String moderator, ArrayList<String> moderators) {
+	public Forum(String name, String description,String rules, String moderator, ArrayList<String> moderators, String icon) {
 		Name = name;
 		Description = description;
 		Moderator = moderator;
 		Moderators = moderators;
 		Rules = rules;
+		Icon = icon;
 	}
 
 
+	
+	public String getIcon() {
+		return Icon;
+	}
+
+
+	public void setIcon(String icon) {
+		Icon = icon;
+	}
+	
 	public String getRoles() {
 		return Rules;
 	}
