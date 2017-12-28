@@ -16,7 +16,7 @@ public class CommentRepositiry {
 	
 
 	public CommentRepositiry(String path) {
-		this.path = "C:\\";
+		this.path = path;
 		this.comments = GetAllComments();
 	}
 
@@ -29,7 +29,7 @@ public class CommentRepositiry {
 		FileInputStream fin = null;
 		ObjectInputStream ois = null;
 		try {
-			 fin = new FileInputStream(this.path + "data\\comments.txt");
+			 fin = new FileInputStream(this.path + "\\data\\comments.txt");
 			 ois = new ObjectInputStream(fin);
 			 commentsIn = (ArrayList<Comment>) ois.readObject();
 		} catch (Exception e) {
@@ -53,7 +53,7 @@ public class CommentRepositiry {
 		this.comments.add(comment);
 		try 
 		{
-		    fout = new FileOutputStream(this.path + "data\\comments.txt");
+		    fout = new FileOutputStream(this.path + "\\data\\comments.txt");
 		    oos = new ObjectOutputStream(fout);
 			oos.writeObject(this.comments);
 		} catch (Exception e) {
@@ -76,7 +76,7 @@ public boolean AddComments(ArrayList<Comment> comments) {
 		FileOutputStream fout = null;
 		try 
 		{
-		    fout = new FileOutputStream(this.path + "data\\comments.txt");
+		    fout = new FileOutputStream(this.path + "\\data\\comments.txt");
 		    oos = new ObjectOutputStream(fout);
 			oos.writeObject(comments);
 		} catch (Exception e) {

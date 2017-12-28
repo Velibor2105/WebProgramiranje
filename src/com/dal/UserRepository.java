@@ -16,7 +16,7 @@ public class UserRepository {
 	
 
 	public UserRepository(String path) {
-		this.path = "C:\\";
+		this.path = path;
 		this.users = GetAllUsers();
 	}
 
@@ -29,7 +29,7 @@ public class UserRepository {
 		FileInputStream fin = null;
 		ObjectInputStream ois = null;
 		try {
-			 fin = new FileInputStream(this.path + "data\\users.txt");
+			 fin = new FileInputStream(this.path + "\\data\\users.txt");
 			 ois = new ObjectInputStream(fin);
 			 users = (ArrayList<User>) ois.readObject();
 		} catch (Exception e) {
@@ -53,7 +53,7 @@ public class UserRepository {
 		this.users.add(user);
 		try 
 		{
-		    fout = new FileOutputStream(this.path + "data\\users.txt");
+		    fout = new FileOutputStream(this.path + "\\data\\users.txt");
 		    oos = new ObjectOutputStream(fout);
 			oos.writeObject(this.users);
 		} catch (Exception e) {
@@ -98,7 +98,7 @@ public class UserRepository {
 	
 		try 
 		{
-		    fout = new FileOutputStream(this.path + "data\\users.txt");
+		    fout = new FileOutputStream(this.path + "\\data\\users.txt");
 		    oos = new ObjectOutputStream(fout);
 			oos.writeObject(users);
 		} catch (Exception e) {

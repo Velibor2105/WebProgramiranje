@@ -17,7 +17,7 @@ public class ForumRepository {
 	
 
 	public ForumRepository(String path) {
-		this.path = "C:\\";
+		this.path = path;
 		this.forums = GetAllForums();
 	}
 
@@ -28,8 +28,9 @@ public class ForumRepository {
 		
 		FileInputStream fin = null;
 		ObjectInputStream ois = null;
+			
 		try {
-			 fin = new FileInputStream(this.path + "data\\forums.txt");
+			 fin = new FileInputStream(this.path + "\\data\\forums.txt");
 			 ois = new ObjectInputStream(fin);
 			 forums = (ArrayList<Forum>) ois.readObject();
 		} catch (Exception e) {
@@ -54,7 +55,7 @@ public class ForumRepository {
 		this.forums.add(forum);
 		try 
 		{
-		    fout = new FileOutputStream(this.path + "data\\forums.txt");
+		    fout = new FileOutputStream(this.path + "\\data\\forums.txt");
 		    oos = new ObjectOutputStream(fout);
 			oos.writeObject(this.forums);
 		} catch (Exception e) {
@@ -90,7 +91,7 @@ public class ForumRepository {
 		FileOutputStream fout = null;
 		try 
 		{
-		    fout = new FileOutputStream(this.path + "data\\forums.txt");
+		    fout = new FileOutputStream(this.path + "\\data\\forums.txt");
 		    oos = new ObjectOutputStream(fout);
 			oos.writeObject(this.forums);
 		} catch (Exception e) {
