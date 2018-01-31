@@ -16,7 +16,7 @@ public class UserRepository {
 	
 
 	public UserRepository(String path) {
-		this.path = path;
+		this.path = "C:";
 		this.users = GetAllUsers();
 	}
 

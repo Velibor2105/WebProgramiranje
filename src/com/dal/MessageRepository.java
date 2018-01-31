@@ -19,7 +19,7 @@ public class MessageRepository {
 	
 
 	public MessageRepository(String path) {
-		this.path = path;
+		this.path = "C:";
 		this.messages = GetAllMessages();
 	}
 	

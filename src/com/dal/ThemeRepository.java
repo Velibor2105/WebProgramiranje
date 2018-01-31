@@ -16,7 +16,7 @@ public class ThemeRepository {
 	
 
 	public ThemeRepository(String path) {
-		this.path = path;
+		this.path = "C:";
 		this.themes = GetAllThemes();
 	}
 

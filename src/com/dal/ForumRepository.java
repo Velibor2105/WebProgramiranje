@@ -17,7 +17,7 @@ public class ForumRepository {
 	
 
 	public ForumRepository(String path) {
-		this.path = path;
+		this.path = "C:";
 		this.forums = GetAllForums();
 	}
 

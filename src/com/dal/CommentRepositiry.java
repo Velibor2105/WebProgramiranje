@@ -16,7 +16,7 @@ public class CommentRepositiry {
 	
 
 	public CommentRepositiry(String path) {
-		this.path = path;
+		this.path = "C:";
 		this.comments = GetAllComments();
 	}
 
